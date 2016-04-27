@@ -130,7 +130,7 @@ public class Reflect {
 
 	public static void main(String[] args) throws ClassNotFoundException, SecurityException, IllegalArgumentException,
 			InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-		test01(1,2);
-		// test02();
+		//test01(1,2);
+		test02();
 	}
 }
