@@ -11,7 +11,8 @@ public class SendFactory {
 
 	public static void main(String[] args) {
 		SendFactory factory = new SendFactory();
-		Sender sender = factory.produce("mail");
+		Sender sender = factory.produce("sms");
+		//Sender sender = factory.produce("mail");
 		sender.Send();
 	}
 
