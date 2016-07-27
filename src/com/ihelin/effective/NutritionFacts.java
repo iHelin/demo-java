@@ -1,5 +1,11 @@
-package com.ihelin.patten;
+package com.ihelin.effective;
 
+/**
+ * 遇到多个构造器参数时考虑用构建器
+ * 
+ * @author ihelin
+ *
+ */
 public class NutritionFacts {
 	private final int servingSize;
 	private final int servings;
@@ -57,7 +63,7 @@ public class NutritionFacts {
 		sodium = builder.sodium;
 		carbohydrate = builder.carbohydrate;
 	}
-	
+
 	public static void main(String[] args) {
 		NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8).calories(100).sodium(35).carbohydrate(27).build();
 		System.out.println(cocaCola);
