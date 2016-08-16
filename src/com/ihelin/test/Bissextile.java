@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Bissextile {
 	public static void main(String[] arge) {
-		System.out.print("请输入年份");
+		System.out.print("请输入年份:");
 		Scanner scanner = new Scanner(System.in);
 		int year = scanner.nextInt();
 		scanner.close();
@@ -13,9 +13,9 @@ public class Bissextile {
 			System.exit(0);
 		}
 		if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0))
-			System.out.println(year + " is bissextile(闰年)");
+			System.out.println(year + " is bissextile(闰年)!");
 		else
-			System.out.println(year + " is not bissextile ");
+			System.out.println(year + " is not bissextile(闰年)!");
 	}
 
 }

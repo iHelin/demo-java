@@ -6,7 +6,7 @@ import java.util.TimeZone;
 
 public class Test4 {
 
-	private Date birthDate;
+	// private Date birthDate;
 
 	private static final Date BOOM_START;
 	private static final Date BOOM_END;

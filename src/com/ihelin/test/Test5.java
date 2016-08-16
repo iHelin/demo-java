@@ -10,6 +10,6 @@ public class Test5 {
 			sum += i;
 		}
 		System.out.println(sum);
-		System.out.println(new Date().getTime()-s.getTime());
+		System.out.println(new Date().getTime() - s.getTime());
 	}
 }
