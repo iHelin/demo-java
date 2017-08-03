@@ -5,7 +5,6 @@ import java.util.Stack;
 public class StackTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Stack<String> s = new Stack<String>();
 		s.push("123");
 		s.push("234");

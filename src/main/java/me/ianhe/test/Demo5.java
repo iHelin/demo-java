@@ -1,9 +1,15 @@
 package me.ianhe.test;
 
 public class Demo5 {
+    public static void main(String[] args) {
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            count = count++;
+        }
+        System.out.println("count=" + count);//输出0
 
-	public static void main(String[] args) {
-		System.out.println(Long.toHexString((Integer) 1000000));
-	}
+        float bugUiOptNum = 0.0F;
+        System.out.println(bugUiOptNum);
+    }
 
 }
