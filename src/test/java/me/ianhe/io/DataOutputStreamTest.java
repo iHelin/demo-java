@@ -14,7 +14,7 @@ public class DataOutputStreamTest {
 
     @Test
     public void test() throws Exception {
-        String file = "demo/DataOutputStreamTest.txt";
+        String file = "demo/DataOutputStream.txt";
         DataOutputStream dos = new DataOutputStream(new FileOutputStream(file));
         dos.writeInt(10);
         dos.writeInt(-10);
@@ -23,7 +23,7 @@ public class DataOutputStreamTest {
         //采用utf-8编码写出
         dos.writeUTF("中国");
         //采用utf-16be写出
-        dos.writeChars("中国");
+//        dos.writeChars("中国");
         dos.close();
         IOUtil.printHex(file);
     }

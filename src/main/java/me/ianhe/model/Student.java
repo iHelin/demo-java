@@ -1,4 +1,4 @@
-package me.ianhe.io;
+package me.ianhe.model;
 
 import java.io.Serializable;
 

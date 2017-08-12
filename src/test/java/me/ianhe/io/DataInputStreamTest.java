@@ -13,7 +13,7 @@ import java.io.FileInputStream;
 public class DataInputStreamTest {
     @Test
     public void test() throws Exception {
-        String file = "demo/FileOutputStream.txt";
+        String file = "demo/DataOutputStream.txt";
         IOUtil.printHex(file);
         System.out.println("-----------");
         DataInputStream dis = new DataInputStream(new FileInputStream(file));

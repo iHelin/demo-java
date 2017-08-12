@@ -1,6 +1,5 @@
 package me.ianhe.io;
 
-import me.ianhe.utils.IOUtil;
 import org.junit.Test;
 
 import java.io.FileOutputStream;
@@ -24,7 +23,6 @@ public class FileOutputStreamTest {
         byte[] utf8 = "中国".getBytes("utf-8");
         out.write(utf8);
 
-        IOUtil.printHex("demo/FileOutputStream.txt");
         out.close();
     }
 

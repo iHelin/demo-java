@@ -10,11 +10,11 @@ import java.io.*;
  * @author iHelin
  * @since 2017/8/3 14:35
  */
-public class BufferedReaderAndBuferedWriterOrPrintWriterTest {
+public class BufferedReaderAndBufferedWriterOrPrintWriterTest {
 
     @Test
     public void testPrintWriter() throws Exception {
-        FileInputStream fis = new FileInputStream("demo/1.txt");
+        FileInputStream fis = new FileInputStream("demo/demo.txt");
         InputStreamReader isr = new InputStreamReader(fis);
         BufferedReader br = new BufferedReader(isr);
         PrintWriter pw = new PrintWriter("demo/PrintWriter.txt");
@@ -30,10 +30,10 @@ public class BufferedReaderAndBuferedWriterOrPrintWriterTest {
 
     @Test
     public void testBuffered() throws Exception {
-        FileInputStream fis = new FileInputStream("demo/1.txt");
+        FileInputStream fis = new FileInputStream("demo/demo.txt");
         InputStreamReader isr = new InputStreamReader(fis);
         BufferedReader br = new BufferedReader(isr);
-        FileOutputStream fos = new FileOutputStream("demo/Buffered.txt");
+        FileOutputStream fos = new FileOutputStream("demo/BufferedWriter.txt");
         OutputStreamWriter osw = new OutputStreamWriter(fos);
         BufferedWriter bw = new BufferedWriter(osw);
         String line;

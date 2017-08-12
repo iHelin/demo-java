@@ -4,23 +4,17 @@ import java.io.*;
 
 /**
  * IO流（输入输出流） 字节流、字符流
- * <p>
  * 1.字节流 InputStream、OutputStream
- * <p>
  * InputStream抽象了应用程序读取数据的方式 OutputStream抽象了应用程序写出数据的方式 EOF = End 读到-1就读到结尾
  * 输入流基本方法 int b = in.read();读取一个字节，无符号填充到int的低八位 -1是EOF in.read(byte[] buf)
  * 读取数据填充到字节数组buf in.read(byte[] buf,int start,int size)
  * 读取数据到字节数组buf，从buf的start位置开始，存放size长度的数据 输出流基本方法 out.write(int b);
  * 写出一个byte到流，b的低八位 out.write(byte[] buf) 将buf字节数组都写入到流 out.write(byte[] buf,int
  * start,int size) 字节数组buf从start位置开始写size长度的字节到流
- * <p>
  * FileInputStream--->具体实现了在文件上读取数据
- * <p>
  * FileOutpuStream--->实现了向文件中写出byte数据的方法
- * <p>
  * DataInputStream/DataOutputStream对“流”功能的扩展，可以更加方便的读取int，long，字符等类型数据
  * writeInt()/writeDouble()/writeUTF()
- * <p>
  * BufferedInputStream/BufferedOutputStream
  * 这两个流类为IO提供了带缓冲区的操作，一般打开文件进行写入或读取操作时，都会加上缓冲	，这种流模式提高了IO的性能
  * 从应用程序中把数据放入文件，相当于将一缸水倒入到另一个缸中
@@ -28,14 +22,14 @@ import java.io.*;
  * DataOutputStream--->writeXxx()方法会方便一些，相当于一瓢一瓢的转移
  * BufferedOutputStream--->write方法更方便，相当于一瓢一瓢先放入桶中，然后从桶中倒入到另一个缸中
  *
- * @author ihelin
+ * @author iHelin
  */
 public class IOUtil {
     /**
      * 读取指定文件的内容，按照16进制输出到控制台 并且每输出10个byte换行 单字节读取不适合大文件，读大文件效率低
      *
      * @param fileName
-     * @throws FileNotFoundException
+     * @throws IOException
      */
     public static void printHex(String fileName) throws IOException {
         // 把文件作为字节流进行读操作
@@ -70,7 +64,7 @@ public class IOUtil {
 		 * System.out.print('0'); } System.out.print(Integer.toHexString(buf[i])
 		 * + " "); if (j++ % 10 == 0) System.out.println(); }
 		 */
-        int bytes = 0;
+        int bytes;
         int j = 1;
         while ((bytes = in.read(buf, 0, buf.length)) != -1) {
             for (int i = 0; i < bytes; i++) {
@@ -83,6 +77,31 @@ public class IOUtil {
             }
         }
         in.close();
+    }
+
+    /**
+     * 单字节，不带缓冲进行文件拷贝
+     *
+     * @param srcFile
+     * @param destFile
+     * @throws IOException
+     */
+    public static void copyFileByByte(File srcFile, File destFile) throws IOException {
+        if (!srcFile.exists()) {
+            throw new IllegalArgumentException("文件：" + srcFile + "不存在");
+        }
+        if (!srcFile.isFile()) {
+            throw new IllegalArgumentException(srcFile + "不是文件");
+        }
+        FileInputStream in = new FileInputStream(srcFile);
+        FileOutputStream out = new FileOutputStream(destFile);
+        int c;
+        while ((c = in.read()) != -1) {
+            out.write(c);
+            out.flush();
+        }
+        in.close();
+        out.close();
     }
 
     /**
@@ -102,9 +121,9 @@ public class IOUtil {
         FileInputStream in = new FileInputStream(srcFile);
         FileOutputStream out = new FileOutputStream(destFile);
         byte[] buf = new byte[8 * 1024];
-        int b;
-        while ((b = in.read(buf, 0, buf.length)) != -1) {
-            out.write(buf, 0, b);
+        int numberRead;
+        while ((numberRead = in.read(buf, 0, buf.length)) != -1) {
+            out.write(buf, 0, numberRead);
             out.flush();// 最好加上
         }
         in.close();
@@ -134,31 +153,6 @@ public class IOUtil {
         }
         bis.close();
         bos.close();
-    }
-
-    /**
-     * 单字节，不带缓冲进行文件拷贝
-     *
-     * @param srcFile
-     * @param destFile
-     * @throws IOException
-     */
-    public static void copyFileByByte(File srcFile, File destFile) throws IOException {
-        if (!srcFile.exists()) {
-            throw new IllegalArgumentException("文件：" + srcFile + "不存在");
-        }
-        if (!srcFile.isFile()) {
-            throw new IllegalArgumentException(srcFile + "不是文件");
-        }
-        FileInputStream in = new FileInputStream(srcFile);
-        FileOutputStream out = new FileOutputStream(destFile);
-        int c;
-        while ((c = in.read()) != -1) {
-            out.write(c);
-            out.flush();
-        }
-        in.close();
-        out.close();
     }
 
 }
