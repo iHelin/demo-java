@@ -74,3 +74,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+.idea/inspectionProfiles/
+src/main/java/me/ianhe/io/
+src/main/resources/
+src/main/webapp/
+src/test/resources/
+target/
