@@ -10,7 +10,7 @@ import java.util.Vector;
  * @since 2017/8/2 17:45
  */
 public class MyDefaultPool implements IMyPool {
-    private Vector<MyPooledConnection> myPooledConnections = new Vector<>();
+    private Vector<MyPooledConnection> myPooledConnections = new Vector();
 
     private static String jdbcDriver;
     private static String jdbcURL;

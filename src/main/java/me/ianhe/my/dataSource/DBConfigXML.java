@@ -6,7 +6,7 @@ package me.ianhe.my.dataSource;
  */
 public class DBConfigXML {
     public static final String jdbcDriver = "com.mysql.jdbc.Driver";
-    public static final String jdbcURL = "jdbc:mysql://120.27.100.98:3306/seven";
+    public static final String jdbcURL = "jdbc:mysql://112.74.203.130:3306/seven";
     public static final String jdbcUserName = "ihelin";
     public static final String jdbcPassword = "246260";
 

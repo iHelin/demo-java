@@ -13,20 +13,17 @@ public class TestMain {
 
     public static void main(String[] args) {
         for (int i = 0; i < 20; i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    MyPooledConnection myPooledConnection = myPool.getMyPooledConnection();
-                    ResultSet query = myPooledConnection.query("select * from user");
-                    try {
-                        while (query.next()) {
-                            System.out.println(query.getString("name") + "，" + query.getString("login_id")
-                                    + "，使用管道：" + myPooledConnection.getConnection().hashCode());
-                        }
-                        myPooledConnection.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
+            new Thread(() -> {
+                MyPooledConnection myPooledConnection = myPool.getMyPooledConnection();
+                ResultSet query = myPooledConnection.query("select * from user");
+                try {
+                    while (query.next()) {
+                        System.out.println(query.getString("name") + "，" + query.getString("login_id")
+                                + "，使用管道：" + myPooledConnection.getConnection().hashCode());
                     }
+                    myPooledConnection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             }).start();
         }

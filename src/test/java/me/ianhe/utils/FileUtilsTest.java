@@ -11,7 +11,7 @@ import java.io.File;
 public class FileUtilsTest {
     @Test
     public void listDirectory() throws Exception {
-        FileUtils.listDirectory(new File("/Users/iHelin/.pentaho"));
+        FileUtils.listDirectory(new File("/Users/iHelin/Music/网易云音乐"));
     }
 
 }
