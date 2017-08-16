@@ -12,7 +12,7 @@ import java.util.Vector;
 public class MyDefaultPool implements IMyPool {
     private Vector<MyPooledConnection> myPooledConnections = new Vector();
 
-    private static String jdbcDriver;
+//    private static String jdbcDriver;
     private static String jdbcURL;
     private static String jdbcUserName;
     private static String jdbcPassword;
@@ -32,7 +32,7 @@ public class MyDefaultPool implements IMyPool {
     }
 
     private void init() {
-        jdbcDriver = DBConfigXML.jdbcDriver;
+//        jdbcDriver = DBConfigXML.jdbcDriver;
         jdbcURL = DBConfigXML.jdbcURL;
         jdbcUserName = DBConfigXML.jdbcUserName;
         jdbcPassword = DBConfigXML.jdbcPassword;
