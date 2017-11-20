@@ -14,8 +14,8 @@ public class NIOTest {
 
 
     public static void main(String[] args) throws IOException {
-        method1();
-//        method2();
+//        method1();
+        method2();
 //        method3();
 //        method4();
 //        method5();
