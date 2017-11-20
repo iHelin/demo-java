@@ -1,5 +1,7 @@
 package me.ianhe.test;
 
+import me.ianhe.model.Apple;
+
 public class TestApple {
 	
 	public static void main(String[] args) {

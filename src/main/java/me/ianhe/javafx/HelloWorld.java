@@ -1,4 +1,4 @@
-package me.ianhe.JavaFX;
+package me.ianhe.javafx;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

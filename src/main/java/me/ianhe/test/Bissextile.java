@@ -19,10 +19,11 @@ public class Bissextile {
             System.out.println("年份有误，程序退出！");
             System.exit(0);
         }
-        if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0))
+        if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) {
             System.out.println(year + " is bissextile(闰年)!");
-        else
+        } else {
             System.out.println(year + " is not bissextile(闰年)!");
+        }
     }
 
 }

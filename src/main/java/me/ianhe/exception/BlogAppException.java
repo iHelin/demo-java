@@ -1,4 +1,4 @@
-package me.ianhe.test;
+package me.ianhe.exception;
 
 public class BlogAppException extends Exception {
 	private static final long serialVersionUID = 1L;

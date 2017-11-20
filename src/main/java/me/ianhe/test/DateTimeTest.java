@@ -4,12 +4,18 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.*;
 
-public class DateTest {
+/**
+ * 日期先关测试
+ *
+ * @author iHelin
+ * @since 2017/11/20 16:38
+ */
+public class DateTimeTest {
 
     public static void main(String[] args) throws ParseException {
         DateFormat aa = DateFormat.getDateInstance();
-        Date date1 = null; // 开始日期
-        Date date2 = null; // 结束日期
+        Date date1; // 开始日期
+        Date date2; // 结束日期
         date1 = aa.parse("2009-10-01");
         date2 = aa.parse("2010-08-01");
         Calendar c1 = Calendar.getInstance();
@@ -30,7 +36,7 @@ public class DateTest {
         // 存放入数组
         String[] str = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            str[i] = (String) list.get(i);
+            str[i] = list.get(i);
         }
         System.out.println(Arrays.toString(str));
 
