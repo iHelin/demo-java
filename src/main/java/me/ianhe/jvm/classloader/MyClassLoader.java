@@ -51,11 +51,11 @@ public class MyClassLoader extends ClassLoader {
     public static void main(String[] args) throws ReflectiveOperationException {
         //1. 将Test.java 编译为Test.class 后复制到 E:\classes 下，当然也可以选择其他目录作为类加载器的classpath。
         //2. 加载
-        ClassLoader classLoader = new MyClassLoader("/Users/iHelin");
-        Class<?> clazz = classLoader.loadClass("Test");//如果你的Test在一个包内，需要加上包名，如x.y.z.Test
+        ClassLoader classLoader = new MyClassLoader("/Users/iHelin/Documents/IdeaProjects/hello/target/classes/me/ianhe/arithmetic/");
+        Class<?> clazz = classLoader.loadClass("me.ianhe.arithmetic.BinarySearch");//如果你的Test在一个包内，需要加上包名，如x.y.z.Test
         //3. 通过反射调用say()方法
         Object instance = clazz.newInstance();
-        Method method = clazz.getMethod("say", null);
+        Method method = clazz.getMethod("main", null);
         method.invoke(instance);//Hello
     }
 }
