@@ -36,16 +36,16 @@ import java.util.Scanner;
  */
 public class NonBlockingNIOTest {
 
-    private int port = 9898;
+    private static int port = 9898;
 
     /**
      * 客户端
+     * 由于使用@Test无法键盘输入，故改为main方法
      *
      * @author iHelin
      * @since 2017/11/22 22:22
      */
-    @Test
-    public void client() throws IOException {
+    public static void main(String[] args) throws IOException {
         //1. 获取通道
         SocketChannel socketChannel = SocketChannel.open(new InetSocketAddress("127.0.0.1", port));
         //2. 切换为非阻塞模式
@@ -65,7 +65,12 @@ public class NonBlockingNIOTest {
         socketChannel.close();
     }
 
-    //服务端
+    /**
+     * 服务端
+     *
+     * @author iHelin
+     * @since 2017/11/22 23:00
+     */
     @Test
     public void server() throws IOException {
         //1. 获取通道
