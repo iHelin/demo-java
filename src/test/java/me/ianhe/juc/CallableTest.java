@@ -42,11 +42,3 @@ class ThreadDemo implements Callable<Integer> {
     }
 
 }
-
-/*class ThreadDemo implements Runnable{
-
-	@Override
-	public void run() {
-	}
-	
-}*/

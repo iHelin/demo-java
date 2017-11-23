@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
  * @author iHelin
  * @since 2017/11/22 10:18
  */
-public class TestCountDownLatch {
+public class CountDownLatchTest {
 
     public static void main(String[] args) {
         final CountDownLatch latch = new CountDownLatch(50);

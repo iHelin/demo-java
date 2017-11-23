@@ -1,23 +1,23 @@
 package me.ianhe.juc;
 
-/*
+/**
  * 生产者和消费者案例
+ *
+ * @author iHelin
+ * @since 2017/11/23 14:07
  */
-public class TestProductorAndConsumer {
+public class ProducerAndConsumerTest {
 
-	public static void main(String[] args) {
-		Clerk clerk = new Clerk();
-		
-		Productor pro = new Productor(clerk);
-		Consumer cus = new Consumer(clerk);
-		
-		new Thread(pro, "生产者 A").start();
-		new Thread(cus, "消费者 B").start();
-		
-		new Thread(pro, "生产者 C").start();
-		new Thread(cus, "消费者 D").start();
-	}
-	
+    public static void main(String[] args) {
+        Clerk clerk = new Clerk();
+        Producer pro = new Producer(clerk);
+        Consumer cus = new Consumer(clerk);
+        new Thread(pro, "生产者 A").start();
+        new Thread(cus, "消费者 B").start();
+        new Thread(pro, "生产者 C").start();
+        new Thread(cus, "消费者 D").start();
+    }
+
 }
 
 /*//店员
