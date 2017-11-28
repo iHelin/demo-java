@@ -1,10 +1,14 @@
 package me.ianhe.model;
 
+import java.io.Serializable;
+
 /**
  * @author iHelin
  * @since 2017/11/27 14:05
  */
-public class Apple {
+public class Apple implements Serializable {
+
+    private static final long serialVersionUID = 6435702077689357740L;
 
     private Integer id;
     private int price;
