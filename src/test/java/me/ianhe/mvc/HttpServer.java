@@ -12,7 +12,7 @@ import java.util.Iterator;
 
 /**
  * http server 实例
- * 《看透spring mvc》一书
+ * 《看透spring mvc》
  *
  * @author iHelin
  * @create 2017-04-02 16:47
@@ -35,16 +35,16 @@ public class HttpServer {
                 continue;
             }
             // 获取待处理的SelectionKey
-            Iterator<SelectionKey> keyIter = selector.selectedKeys().iterator();
+            Iterator<SelectionKey> keyIterator = selector.selectedKeys().iterator();
 
-            while (keyIter.hasNext()) {
-                SelectionKey key = keyIter.next();
+            while (keyIterator.hasNext()) {
+                SelectionKey selectionKey = keyIterator.next();
                 // 启动新线程处理SelectionKey
-                Thread t = new Thread(new HttpHandler(key));
-                t.setName("http-thread");
-                t.run();
+                Thread thread = new Thread(new HttpHandler(selectionKey));
+                thread.setName("http-thread");
+                thread.run();
                 // 处理完后，从待处理的SelectionKey迭代器中移除当前所使用的key
-                keyIter.remove();
+                keyIterator.remove();
             }
         }
     }

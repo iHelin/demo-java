@@ -7,13 +7,24 @@ package me.ianhe.my.cache;
  * @since 2017/8/3 14:37
  */
 public class Cache {
-    private String key;// 缓存ID
-    private Object value;// 缓存数据
-    private long timeOut;// 更新时间
-    private boolean expired; // 是否终止
+    /**
+     * 缓存ID
+     */
+    private String key;
+    /**
+     * 缓存数据
+     */
+    private Object value;
+    /**
+     * 更新时间
+     */
+    private long timeOut;
+    /**
+     * 是否有效
+     */
+    private boolean expired;
 
     public Cache() {
-        super();
     }
 
     public Cache(String key, Object value, long timeOut, boolean expired) {

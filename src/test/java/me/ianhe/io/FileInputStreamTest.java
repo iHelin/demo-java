@@ -16,22 +16,22 @@ public class FileInputStreamTest {
     @Test
     public void testFileInputStream() {
         int count = 0;  //统计文件字节长度
-        InputStream streamReader = null;   //文件输入流
+        InputStream inputStream = null;   //文件输入流
         try {
-            streamReader = new FileInputStream(new File("demo/IO.jpg"));
+            inputStream = new FileInputStream(new File("demo/IO.jpg"));
             // FileInputStream是有缓冲区的，所以用完之后必须关闭，否则可能导致内存占满，数据丢失。
-            while (streamReader.read() != -1) {  //读取文件字节，并递增指针到下一个字节
+            while (inputStream.read() != -1) {  //读取文件字节，并递增指针到下一个字节
                 count++;
             }
             //FileInputStream不支持mark/reset操作；BufferedInputStream支持此操作
-            System.out.println("markSupported:" + streamReader.markSupported());
+            System.out.println("markSupported:" + inputStream.markSupported());
             System.out.println("文件长度是： " + count + " 字节");
         } catch (final IOException e) {
             e.printStackTrace();
         } finally {
-            if (streamReader != null) {
+            if (inputStream != null) {
                 try {
-                    streamReader.close();
+                    inputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

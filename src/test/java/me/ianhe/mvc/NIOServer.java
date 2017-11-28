@@ -1,7 +1,13 @@
 package me.ianhe.mvc;
 
+import org.junit.Test;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -18,15 +24,35 @@ import java.util.Iterator;
  */
 public class NIOServer {
 
-    public static void main(String[] args) throws Exception {
+    @Test
+    public void client() {
+        String msg = "I am client data";
+        try {
+            Socket socket = new Socket("localhost", 8080);
+            PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+            BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            printWriter.println(msg);
+            printWriter.flush();
+            String line = is.readLine();
+            System.out.println("received from server: " + line);
+            printWriter.close();
+            is.close();
+            socket.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void server() throws Exception {
         //创建ServerSocketChannel，监听8080端口
-        ServerSocketChannel ssc = ServerSocketChannel.open();
-        ssc.socket().bind(new InetSocketAddress(8080));
+        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+        serverSocketChannel.socket().bind(new InetSocketAddress(8080));
         //设置为非阻塞模式
-        ssc.configureBlocking(false);
+        serverSocketChannel.configureBlocking(false);
         //为ssc注册选择器
         Selector selector = Selector.open();
-        ssc.register(selector, SelectionKey.OP_ACCEPT);
+        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
         //创建处理器
         Handler handler = new Handler(1024);
         while (true) {
@@ -37,10 +63,10 @@ public class NIOServer {
             }
             System.out.println("处理请求。。。");
             // 获取待处理的SelectionKey
-            Iterator<SelectionKey> keyIter = selector.selectedKeys().iterator();
+            Iterator<SelectionKey> keyIterator = selector.selectedKeys().iterator();
 
-            while (keyIter.hasNext()) {
-                SelectionKey key = keyIter.next();
+            while (keyIterator.hasNext()) {
+                SelectionKey key = keyIterator.next();
                 try {
                     // 接收到连接请求时
                     if (key.isAcceptable()) {
@@ -51,11 +77,11 @@ public class NIOServer {
                         handler.handleRead(key);
                     }
                 } catch (IOException ex) {
-                    keyIter.remove();
+                    keyIterator.remove();
                     continue;
                 }
                 // 处理完后，从待处理的SelectionKey迭代器中移除当前所使用的key
-                keyIter.remove();
+                keyIterator.remove();
             }
         }
     }

@@ -5,15 +5,29 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+/**
+ * 缓存实现
+ *
+ * @author iHelin
+ * @since 2017/11/27 14:34
+ */
 public class CacheManager {
+
     private static HashMap<String, Object> cacheMap = new HashMap<>();
 
-    // 单实例构造方法
+    /**
+     * 单实例构造方法
+     */
     private CacheManager() {
         super();
     }
 
-    // 获取布尔值的缓存
+    /**
+     * 获取布尔值的缓存
+     *
+     * @param key
+     * @return
+     */
     public static boolean getSimpleFlag(String key) {
         try {
             return (Boolean) cacheMap.get(key);
@@ -30,9 +44,16 @@ public class CacheManager {
         }
     }
 
-    // 设置布尔值的缓存
+    /**
+     * 设置布尔值的缓存
+     *
+     * @param key
+     * @param flag 是否允许被覆盖
+     * @return
+     */
     public synchronized static boolean setSimpleFlag(String key, boolean flag) {
-        if (flag && getSimpleFlag(key)) {// 假如为真不允许被覆盖
+        // 假如为真不允许被覆盖
+        if (flag && getSimpleFlag(key)) {
             return false;
         } else {
             cacheMap.put(key, flag);
@@ -49,31 +70,48 @@ public class CacheManager {
         }
     }
 
-    // 得到缓存，同步静态方法
+    /**
+     * 得到缓存，同步静态方法
+     *
+     * @param key
+     * @return
+     */
     private synchronized static Cache getCache(String key) {
         return (Cache) cacheMap.get(key);
     }
 
-    // 判断是否存在一个缓存
+    /**
+     * 判断是否存在一个缓存
+     *
+     * @param key
+     * @return
+     */
     private synchronized static boolean hasCache(String key) {
         return cacheMap.containsKey(key);
     }
 
-    // 清除所有缓存
+    /**
+     * 清除所有缓存
+     */
     public synchronized static void clearAll() {
         cacheMap.clear();
     }
 
-    // 清除某一类特定缓存,通过遍历HASHMAP下的所有对象，来判断它的KEY与传入的TYPE是否匹配
+    /**
+     * 清除某一类特定缓存,通过遍历HashMap下的所有对象，来判断它的key与传入的type是否匹配
+     *
+     * @param type
+     */
     public synchronized static void clearAll(String type) {
         Iterator<?> i = cacheMap.entrySet().iterator();
         String key;
-        ArrayList<String> arr = new ArrayList<String>();
+        ArrayList<String> arr = new ArrayList<>();
         try {
             while (i.hasNext()) {
                 Entry<String, Object> entry = (Entry<String, Object>) i.next();
                 key = entry.getKey();
-                if (key.startsWith(type)) { // 如果匹配则删除掉
+                // 如果匹配则删除掉
+                if (key.startsWith(type)) {
                     arr.add(key);
                 }
             }
@@ -85,68 +123,119 @@ public class CacheManager {
         }
     }
 
-    // 清除指定的缓存
+    /**
+     * 清除指定的缓存
+     *
+     * @param key
+     */
     public synchronized static void clearOnly(String key) {
         cacheMap.remove(key);
     }
 
-    // 载入缓存
+    /**
+     * 载入缓存
+     *
+     * @param key
+     * @param obj
+     */
     public synchronized static void putCache(String key, Cache obj) {
         cacheMap.put(key, obj);
     }
 
-    // 获取缓存信息
+    /**
+     * 获取缓存信息
+     *
+     * @param key
+     * @return
+     */
     public static Cache getCacheInfo(String key) {
         if (hasCache(key)) {
             Cache cache = getCache(key);
-            if (cacheExpired(cache)) { // 调用判断是否终止方法
+            // 调用判断是否终止方法
+            if (cacheExpired(cache)) {
                 cache.setExpired(true);
             }
             return cache;
-        } else
+        } else {
             return null;
+        }
     }
 
-    // 载入缓存信息
+    /**
+     * 载入缓存信息
+     *
+     * @param key
+     * @param obj
+     * @param dt
+     * @param expired
+     */
     public static void putCacheInfo(String key, Cache obj, long dt, boolean expired) {
         Cache cache = new Cache();
         cache.setKey(key);
-        cache.setTimeOut(dt + System.currentTimeMillis()); // 设置多久后更新缓存
+        // 设置多久后更新缓存
+        cache.setTimeOut(dt + System.currentTimeMillis());
         cache.setValue(obj);
-        cache.setExpired(expired); // 缓存默认载入时，终止状态为FALSE
+        cache.setExpired(expired);
         cacheMap.put(key, cache);
     }
 
-    // 重写载入缓存信息方法
+    /**
+     * 重写载入缓存信息方法
+     *
+     * @param key
+     * @param obj
+     * @param dt
+     */
     public static void putCacheInfo(String key, Cache obj, long dt) {
         Cache cache = new Cache();
         cache.setKey(key);
         cache.setTimeOut(dt + System.currentTimeMillis());
         cache.setValue(obj);
+        //缓存默认载入时，过期状态为FALSE
         cache.setExpired(false);
         cacheMap.put(key, cache);
     }
 
-    // 判断缓存是否终止
+    /**
+     * 判断缓存是否过期
+     *
+     * @param cache
+     * @return
+     */
     public static boolean cacheExpired(Cache cache) {
-        if (null == cache) { // 传入的缓存不存在
+        // 传入的缓存不存在
+        if (null == cache) {
             return false;
         }
-        long nowDt = System.currentTimeMillis(); // 系统当前的毫秒数
-        long cacheDt = cache.getTimeOut(); // 缓存内的过期毫秒数
-        if (cacheDt <= 0 || cacheDt > nowDt) { // 过期时间小于等于零时,或者过期时间大于当前时间时，则为FALSE
+        // 系统当前的毫秒数
+        long nowDt = System.currentTimeMillis();
+        // 缓存内的过期毫秒数
+        long cacheDt = cache.getTimeOut();
+
+        if (cacheDt <= 0 || cacheDt > nowDt) {
+            // 过期时间小于等于零时,或者过期时间大于当前时间时，则为FALSE
             return false;
-        } else { // 大于过期时间 即过期
+        } else {
+            // 大于过期时间 即过期
             return true;
         }
     }
 
-    // 获取缓存中的大小
+    /**
+     * 获取缓存中的大小
+     *
+     * @return
+     */
     public static int getCacheSize() {
         return cacheMap.size();
     }
 
-    // 获取指定的类型的大小
+    /**
+     * 获取指定的类型的大小
+     *
+     * @param type
+     * @return
+     */
     public static int getCacheSize(String type) {
         int k = 0;
         Iterator<?> i = cacheMap.entrySet().iterator();
@@ -155,7 +244,8 @@ public class CacheManager {
             while (i.hasNext()) {
                 Entry<?, ?> entry = (Entry<?, ?>) i.next();
                 key = (String) entry.getKey();
-                if (key.indexOf(type) != -1) { // 如果匹配则删除掉
+                // 如果匹配则删除掉
+                if (key.indexOf(type) != -1) {
                     k++;
                 }
             }
@@ -166,7 +256,11 @@ public class CacheManager {
         return k;
     }
 
-    // 获取缓存对象中的所有键值名称
+    /**
+     * 获取缓存对象中的所有键值名称
+     *
+     * @return
+     */
     public static ArrayList<String> getCacheAllkey() {
         ArrayList<String> a = new ArrayList<>();
         try {
@@ -181,7 +275,12 @@ public class CacheManager {
         }
     }
 
-    // 获取缓存对象中指定类型 的键值名称
+    /**
+     * 获取缓存对象中指定类型 的键值名称
+     *
+     * @param type
+     * @return
+     */
     public static ArrayList<String> getCacheListkey(String type) {
         ArrayList a = new ArrayList();
         String key;

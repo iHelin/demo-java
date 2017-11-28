@@ -1,7 +1,6 @@
 package me.ianhe.mvc;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -17,9 +16,8 @@ import java.net.Socket;
  */
 public class Service {
 
-    private static Logger logger = LoggerFactory.getLogger(Service.class);
-
-    public static void main(String[] args) {
+    @Test
+    public void server() {
         try {
             //创建一个ServerSocket监听8080端口
             ServerSocket serverSocket = new ServerSocket(8080);
@@ -28,7 +26,7 @@ public class Service {
             //接收到请求后使用socket进行通信，创建BufferedReader用于读取数据
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line = bufferedReader.readLine();
-            logger.debug("received from client: " + line);
+            System.out.println("received from client: " + line);
             //创建PrintWriter，用于发送数据
             PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
             printWriter.println("received data: " + line);

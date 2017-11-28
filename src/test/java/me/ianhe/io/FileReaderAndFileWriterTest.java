@@ -13,15 +13,15 @@ public class FileReaderAndFileWriterTest {
 
     @Test
     public void test() throws Exception {
-        FileReader fr = new FileReader("demo/FileReader.txt");
-        FileWriter fw = new FileWriter("demo/FileWriter.txt");
+        FileReader fileReader = new FileReader("demo/FileReader.txt");
+        FileWriter fileWriter = new FileWriter("demo/FileWriter.txt");
         char[] buffer = new char[2056];
         int c;
-        while ((c = fr.read(buffer, 0, buffer.length)) != -1) {
-            fw.write(buffer, 0, c);
-            fw.flush();
+        while ((c = fileReader.read(buffer, 0, buffer.length)) != -1) {
+            fileWriter.write(buffer, 0, c);
+            fileWriter.flush();
         }
-        fw.close();
-        fr.close();
+        fileWriter.close();
+        fileReader.close();
     }
 }

@@ -5,7 +5,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * 遇到多个构造器参数时考虑用构建器
  *
- * @author ihelin
+ * @author iHelin
+ * @since 2017/11/27 14:24
  */
 public class NutritionFacts {
     private final int servingSize;
@@ -16,11 +17,15 @@ public class NutritionFacts {
     private final int carbohydrate;
 
     public static class Builder {
-        // Required parameters
+        /**
+         * Required parameters
+         */
         private final int servingSize;
         private final int servings;
 
-        // Optional parameters
+        /**
+         * Optional parameters
+         */
         private int calories = 0;
         private int fat = 0;
         private int sodium = 0;

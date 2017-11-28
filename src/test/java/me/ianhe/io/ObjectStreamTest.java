@@ -18,11 +18,11 @@ public class ObjectStreamTest {
     public void testObjectStream() throws Exception {
         String file = "demo/ObjectStream.txt";
         //1.对象序列化
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
         Student student = new Student("1001", "张三", 12);
-        oos.writeObject(student);
-        oos.flush();
-        oos.close();
+        objectOutputStream.writeObject(student);
+        objectOutputStream.flush();
+        objectOutputStream.close();
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
         Student stu = (Student) ois.readObject();
         System.out.println(stu);

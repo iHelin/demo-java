@@ -4,6 +4,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
+/**
+ * 静态代码块
+ *
+ * @author iHelin
+ * @since 2017/11/27 14:21
+ */
 public class BabyBoomer {
     private static Date birthDate;
 
@@ -18,7 +24,7 @@ public class BabyBoomer {
         BOOM_END = gmtCal.getTime();
     }
 
-    public boolean isBabyBoomer() {
+    public static boolean isBabyBoomer() {
         return birthDate.compareTo(BOOM_START) >= 0 && birthDate.compareTo(BOOM_END) < 0;
     }
 
@@ -26,7 +32,6 @@ public class BabyBoomer {
         Calendar cal = Calendar.getInstance();
         cal.set(1947, Calendar.FEBRUARY, 1, 0, 0, 0);
         birthDate = cal.getTime();
-        BabyBoomer p = new BabyBoomer();
-        System.out.println(p.isBabyBoomer());
+        System.out.println(isBabyBoomer());
     }
 }

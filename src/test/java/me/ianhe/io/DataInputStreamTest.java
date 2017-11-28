@@ -11,23 +11,24 @@ import java.io.FileInputStream;
  * @since 2017/8/3 14:53
  */
 public class DataInputStreamTest {
+
     @Test
     public void test() throws Exception {
         String file = "demo/DataOutputStream.txt";
         IOUtil.printHex(file);
         System.out.println("-----------");
-        DataInputStream dis = new DataInputStream(new FileInputStream(file));
-        int i = dis.readInt();
+        DataInputStream dataInputStream = new DataInputStream(new FileInputStream(file));
+        int i = dataInputStream.readInt();
         System.out.println(i);
-        i = dis.readInt();
+        i = dataInputStream.readInt();
         System.out.println(i);
-        long l = dis.readLong();
+        long l = dataInputStream.readLong();
         System.out.println(l);
-        double d = dis.readDouble();
+        double d = dataInputStream.readDouble();
         System.out.println(d);
-        String s = dis.readUTF();
+        String s = dataInputStream.readUTF();
         System.out.println(s);
-        dis.close();
+        dataInputStream.close();
     }
 
 }

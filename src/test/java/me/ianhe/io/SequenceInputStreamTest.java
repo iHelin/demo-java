@@ -21,7 +21,7 @@ public class SequenceInputStreamTest {
     @Test
     public void doSequence() {
         // 创建一个合并流的对象
-        SequenceInputStream sis = null;
+        SequenceInputStream sequenceInputStream = null;
         // 创建输出流。
         BufferedOutputStream bos = null;
         try {
@@ -31,13 +31,13 @@ public class SequenceInputStreamTest {
             vector.addElement(new FileInputStream("demo/demo.txt"));
             vector.addElement(new FileInputStream("demo/demo.txt"));
             Enumeration<InputStream> e = vector.elements();
-            sis = new SequenceInputStream(e);
+            sequenceInputStream = new SequenceInputStream(e);
 
             bos = new BufferedOutputStream(new FileOutputStream("demo/SequenceInputStream.txt"));
             // 读写数据
             byte[] buf = new byte[1024];
             int len;
-            while ((len = sis.read(buf)) != -1) {
+            while ((len = sequenceInputStream.read(buf)) != -1) {
                 bos.write(buf, 0, len);
                 bos.flush();
             }
@@ -47,8 +47,8 @@ public class SequenceInputStreamTest {
             e1.printStackTrace();
         } finally {
             try {
-                if (sis != null)
-                    sis.close();
+                if (sequenceInputStream != null)
+                    sequenceInputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

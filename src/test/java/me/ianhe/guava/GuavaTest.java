@@ -13,21 +13,21 @@ import java.util.List;
 public class GuavaTest {
 
     /**
-     * Ints工具类
+     * com.google.common.primitives.Ints工具类
      *
      * @author iHelin
      * @since 2017-05-10 15:30
      */
     @Test
-    public void intsTest() {
-        int[] ints = {10, 20, 30, 9, 40, 80};
-        System.out.println(Ints.max(ints));
+    public void intTest() {
+        int[] intArray = {10, 20, 30, 9, 40, 80};
+        System.out.println(Ints.max(intArray));
         List<Integer> list = Lists.newArrayList();
         list.add(1);
         list.add(3);
         list.add(2);
-        ints = Ints.toArray(list);
-        System.out.println(Ints.max(ints));
+        intArray = Ints.toArray(list);
+        System.out.println(Ints.max(intArray));
     }
 
 }

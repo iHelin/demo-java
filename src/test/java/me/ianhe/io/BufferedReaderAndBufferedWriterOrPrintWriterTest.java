@@ -14,36 +14,36 @@ public class BufferedReaderAndBufferedWriterOrPrintWriterTest {
 
     @Test
     public void testPrintWriter() throws Exception {
-        FileInputStream fis = new FileInputStream("demo/demo.txt");
-        InputStreamReader isr = new InputStreamReader(fis);
-        BufferedReader br = new BufferedReader(isr);
-        PrintWriter pw = new PrintWriter("demo/PrintWriter.txt");
+        FileInputStream fileInputStream = new FileInputStream("demo/demo.txt");
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        PrintWriter printWriter = new PrintWriter("demo/PrintWriter.txt");
         String line;
-        while ((line = br.readLine()) != null) {
+        while ((line = bufferedReader.readLine()) != null) {
             System.out.println(line);// 一次读一行
-            pw.println(line);
-            pw.flush();
+            printWriter.println(line);
+            printWriter.flush();
         }
-        br.close();
-        pw.close();
+        bufferedReader.close();
+        printWriter.close();
     }
 
     @Test
     public void testBuffered() throws Exception {
-        FileInputStream fis = new FileInputStream("demo/demo.txt");
-        InputStreamReader isr = new InputStreamReader(fis);
-        BufferedReader br = new BufferedReader(isr);
-        FileOutputStream fos = new FileOutputStream("demo/BufferedWriter.txt");
-        OutputStreamWriter osw = new OutputStreamWriter(fos);
-        BufferedWriter bw = new BufferedWriter(osw);
+        FileInputStream fileInputStream = new FileInputStream("demo/demo.txt");
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        FileOutputStream fileOutputStream = new FileOutputStream("demo/BufferedWriter.txt");
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
+        BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
         String line;
-        while ((line = br.readLine()) != null) {
+        while ((line = bufferedReader.readLine()) != null) {
             System.out.println(line);// 一次读一行
-            bw.write(line); //单独写换行操作 bw.newLine();//换行操作 bw.flush();
-            bw.newLine();
+            bufferedWriter.write(line); //单独写换行操作 bw.newLine();//换行操作 bw.flush();
+            bufferedWriter.newLine();
         }
-        br.close();
-        bw.close();
+        bufferedReader.close();
+        bufferedWriter.close();
     }
 
 }

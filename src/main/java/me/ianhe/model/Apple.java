@@ -1,5 +1,9 @@
 package me.ianhe.model;
 
+/**
+ * @author iHelin
+ * @since 2017/11/27 14:05
+ */
 public class Apple {
 
     private Integer id;
@@ -34,6 +38,11 @@ public class Apple {
         this.name = name;
     }
 
+    /**
+     * 重写hashCode，只对id做hash
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -44,18 +53,23 @@ public class Apple {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Apple other = (Apple) obj;
         if (id == null) {
-            if (other.id != null)
+            if (other.id != null) {
                 return false;
-        } else if (!id.equals(other.id))
+            }
+        } else if (!id.equals(other.id)) {
             return false;
+        }
         return true;
     }
 
