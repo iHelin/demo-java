@@ -47,17 +47,17 @@ public class ReaderAndWriterTest {
         //读取字节转换成字符
         FileInputStream fileInputStream = new FileInputStream("demo/inputStreamReader.txt");
         InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, CharEncoding.UTF_8);
-        StringBuffer buffer = new StringBuffer();
+        StringBuffer stringBuffer = new StringBuffer();
         char[] chars = new char[64];
         int count;
         try {
             while ((count = inputStreamReader.read(chars)) > 0) {
-                buffer.append(chars, 0, count);
+                stringBuffer.append(chars, 0, count);
             }
         } finally {
             inputStreamReader.close();
         }
-        System.out.println(buffer.toString());
+        System.out.println(stringBuffer.toString());
     }
 
     /**

@@ -1,5 +1,9 @@
 package me.ianhe.exception;
 
+/**
+ * @author iHelin
+ * @since 2017/11/29 11:00
+ */
 public class BlogAppException extends Exception {
     private static final long serialVersionUID = 1L;
 

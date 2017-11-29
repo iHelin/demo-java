@@ -33,19 +33,20 @@ public class IOUtil {
      */
     public static void printHex(String fileName) throws IOException {
         // 把文件作为字节流进行读操作
-        FileInputStream in = new FileInputStream(fileName);
+        FileInputStream fileInputStream = new FileInputStream(fileName);
         int b;
         int i = 1;
-        while ((b = in.read()) != -1) {
+        while ((b = fileInputStream.read()) != -1) {
             if (b <= 0xf) {
                 // 单位数前面补0
                 System.out.print('0');
             }
             System.out.print(Integer.toHexString(b) + " ");
-            if (i++ % 10 == 0)
+            if (i++ % 10 == 0) {
                 System.out.println();
+            }
         }
-        in.close();
+        fileInputStream.close();
     }
 
     /**

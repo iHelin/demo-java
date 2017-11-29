@@ -1,10 +1,6 @@
-package me.ianhe.test;
-
-import me.ianhe.exception.BlogAppException;
+package me.ianhe.exception;
 
 /**
- *
- *
  * @author iHelin
  * @since 2017/11/20 18:19
  */
@@ -27,6 +23,8 @@ public class ExceptionTest {
             bar();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            System.out.println("12345");
         }
         System.out.println("program is still running here!");
     }

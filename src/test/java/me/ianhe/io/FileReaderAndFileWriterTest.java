@@ -11,10 +11,14 @@ import java.io.FileWriter;
  */
 public class FileReaderAndFileWriterTest {
 
+    /**
+     * @author iHelin
+     * @since 2017/11/29 14:49
+     */
     @Test
     public void test() throws Exception {
-        FileReader fileReader = new FileReader("demo/FileReader.txt");
-        FileWriter fileWriter = new FileWriter("demo/FileWriter.txt");
+        FileReader fileReader = new FileReader("demo/read.txt");
+        FileWriter fileWriter = new FileWriter("demo/fileWriter.txt");
         char[] buffer = new char[2056];
         int c;
         while ((c = fileReader.read(buffer, 0, buffer.length)) != -1) {

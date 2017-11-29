@@ -27,19 +27,24 @@ import java.util.Arrays;
  */
 public class RandomAccessFileTest {
 
+    /**
+     * @author iHelin
+     * @since 2017/11/29 14:53
+     */
     @Test
     public void test() throws IOException {
         File demoFile = new File("demo");
         if (!demoFile.exists())
             demoFile.mkdir();
-        File file = new File(demoFile, "RandomAccessFile.txt");
+        File file = new File(demoFile, "randomAccessFile.txt");
         if (!file.exists()) {
             file.createNewFile();
         }
         RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
         //指针的位置
         System.out.println(randomAccessFile.getFilePointer());
-        randomAccessFile.write('A');//只写了一个字节
+        //只写了一个字节
+        randomAccessFile.write('A');
         System.out.println(randomAccessFile.getFilePointer());
         randomAccessFile.write('B');
         System.out.println(randomAccessFile.getFilePointer());

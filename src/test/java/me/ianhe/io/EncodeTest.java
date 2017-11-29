@@ -50,4 +50,10 @@ public class EncodeTest {
 		 */
     }
 
+    @Test
+    public void unicodeTest() {
+        String c = "\u5bf9\u8c61";
+        System.out.println(c);
+    }
+
 }
