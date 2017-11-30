@@ -1,4 +1,4 @@
-package me.ianhe.mvc;
+package me.ianhe.socket;
 
 import org.junit.Test;
 

@@ -1,5 +1,6 @@
 package me.ianhe.xml;
 
+import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -15,9 +16,10 @@ import java.io.IOException;
  * @author iHelin
  * @since 2017/11/21 12:23
  */
-public class DOMTest {
+public class XmlTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try {

@@ -98,7 +98,7 @@ public class ReaderAndWriterTest {
         int count;
         while ((count = bufferedReader.read(chars)) != -1) {
             printWriter.write(chars, 0, count);
-            System.out.println(count);
+            System.out.print(new String(chars, 0, count));
         }
         bufferedReader.close();
         printWriter.close();

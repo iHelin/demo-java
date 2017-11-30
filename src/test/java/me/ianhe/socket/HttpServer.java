@@ -1,4 +1,4 @@
-package me.ianhe.mvc;
+package me.ianhe.socket;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
