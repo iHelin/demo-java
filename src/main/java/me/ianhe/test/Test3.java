@@ -20,6 +20,8 @@ public class Test3 {
     }
 
     public static void main(String[] args) {
+        System.out.println(Runtime.getRuntime().availableProcessors());
+
         /*for (int i = 0; i < 128; i++) {
             System.out.print("i=" + i);
             System.out.print(((char) i) + "\t");

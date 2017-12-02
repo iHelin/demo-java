@@ -3,7 +3,7 @@ package me.ianhe.juc;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * CountDownLatch ：闭锁，在完成某些运算是，只有其他所有线程的运算全部完成，当前运算才继续执行
+ * CountDownLatch ：闭锁，在完成某些运算时，只有其他所有线程的运算全部完成，当前运算才继续执行
  *
  * @author iHelin
  * @since 2017/11/22 10:18
@@ -12,10 +12,10 @@ public class CountDownLatchTest {
 
     public static void main(String[] args) {
         final CountDownLatch latch = new CountDownLatch(50);
-        LatchDemo ld = new LatchDemo(latch);
+        LatchDemo latchDemo = new LatchDemo(latch);
         long start = System.currentTimeMillis();
         for (int i = 0; i < 50; i++) {
-            new Thread(ld).start();
+            new Thread(latchDemo).start();
         }
         try {
             latch.await();

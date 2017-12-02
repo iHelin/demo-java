@@ -15,24 +15,6 @@ import java.util.Objects;
 public class SingletonPattern {
 
     /**
-     * 懒汉式，线程不安全，在使用时初始化示例（懒加载）
-     */
-    static class Singleton1 {
-        private static Singleton1 instance;
-
-        private Singleton1() {
-            new AssertionError("don't support reflect.");
-        }
-
-        public static Singleton1 getInstance() {
-            if (instance == null) {
-                instance = new Singleton1();
-            }
-            return instance;
-        }
-    }
-
-    /**
      * 终极版:volatile
      * 懒汉式，线程安全，在使用时初始化示例（懒加载）
      */
@@ -97,8 +79,6 @@ public class SingletonPattern {
 
     @Test
     public void testEquals() {
-        Assert.assertTrue(Objects.equals(Singleton1.getInstance(), Singleton1.getInstance()));
-        Assert.assertTrue(Objects.equals(Singleton1.getInstance(), Singleton1.getInstance()));
         Assert.assertTrue(Objects.equals(Singleton2.getInstance(), Singleton2.getInstance()));
         Assert.assertTrue(Objects.equals(Singleton3.getInstance(), Singleton3.getInstance()));
         Assert.assertTrue(Objects.equals(Singleton4.getInstance(), Singleton4.getInstance()));
