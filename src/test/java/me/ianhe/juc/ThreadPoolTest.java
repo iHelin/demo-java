@@ -28,46 +28,44 @@ import java.util.concurrent.Future;
  */
 public class ThreadPoolTest {
 
+    static class ThreadPoolDemo implements Runnable {
+        private int i = 0;
+
+        @Override
+        public void run() {
+            while (i <= 100) {
+                System.out.println(Thread.currentThread().getName() + " : " + i++);
+            }
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         //1. 创建线程池
-        ExecutorService pool = Executors.newFixedThreadPool(5);
+        ExecutorService executor = Executors.newFixedThreadPool(5);
         List<Future<Integer>> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Future<Integer> future = pool.submit(() -> {
+            Future<Integer> future = executor.submit(() -> {
                 int sum = 0;
-                for (int i1 = 0; i1 <= 100; i1++) {
-                    sum += i1;
+                for (int j = 0; j <= 100; j++) {
+                    sum += j;
                 }
                 return sum;
             });
             list.add(future);
         }
-        pool.shutdown();
+//        executor.shutdown();
         for (Future<Integer> future : list) {
             System.out.println(future.get());
         }
 
-		/*ThreadPoolDemo tpd = new ThreadPoolDemo();
+        ThreadPoolDemo tpd = new ThreadPoolDemo();
 
-		//2. 为线程池中的线程分配任务
-		for (int i = 0; i < 10; i++) {
-			pool.submit(tpd);
-		}
-		//3. 关闭线程池
-		pool.shutdown();*/
-    }
-
-//	new Thread(tpd).start();
-//	new Thread(tpd).start();
-}
-
-class ThreadPoolDemo implements Runnable {
-    private int i = 0;
-
-    @Override
-    public void run() {
-        while (i <= 100) {
-            System.out.println(Thread.currentThread().getName() + " : " + i++);
+        //2. 为线程池中的线程分配10个任务
+        for (int i = 0; i < 10; i++) {
+            executor.submit(tpd);
         }
+        //3. 关闭线程池
+        executor.shutdown();
     }
+
 }

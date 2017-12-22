@@ -1,6 +1,7 @@
 package me.ianhe.juc;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author iHelin
@@ -21,7 +22,8 @@ public class SemaphoreTest {
                 semaphore.acquire();
                 long time = (long) (Math.random() * 10);
                 System.out.println(Thread.currentThread().getName() + "进入停车场，停车" + time + "秒...");
-                Thread.sleep(time);
+//                Thread.sleep(time);
+                TimeUnit.SECONDS.sleep(time);
                 System.out.println(Thread.currentThread().getName() + "开出停车场...");
             } catch (InterruptedException e) {
                 e.printStackTrace();
