@@ -1,14 +1,14 @@
 package me.ianhe.effective.java;
 
 /**
- * 单例
+ * 单例 - 使用枚举实现
  *
  * @author iHelin
  * @since 2017/11/27 14:27
  */
 public class Elvis {
 
-    public static final Elvis INSTANCE = new Elvis();
+    private static final Elvis INSTANCE = new Elvis();
 
     private Elvis() {
 

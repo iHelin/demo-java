@@ -1,7 +1,7 @@
 package me.ianhe.juc;
 
+import java.util.Random;
 import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -11,46 +11,51 @@ import java.util.concurrent.locks.ReentrantLock;
  * @since 2017/11/23 14:07
  */
 public class ProducerAndConsumerForLockTest {
+
     static class Clerk {
         private int product = 0;
-        private Lock lock = new ReentrantLock();
-        private Condition condition = lock.newCondition();
+        private int threshold = 3;
+        private ReentrantLock reentrantLock = new ReentrantLock();
+        private Condition condition = reentrantLock.newCondition();
 
         // 进货
         public void get() {
-            lock.lock();
+            reentrantLock.lock();
             try {
-                if (product >= 1) { // 为了避免虚假唤醒，应该总是使用在循环中。
-                    System.out.println("产品已满！");
+                if (product >= threshold) {
+                    // 为了避免虚假唤醒，应该总是使用在循环中。
+                    System.out.println("货架已满！");
                     try {
                         condition.await();
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
-                System.out.println(Thread.currentThread().getName() + " : "
+                System.out.println(Thread.currentThread().getName() + "上架了一件商品，剩余: "
                         + ++product);
                 condition.signalAll();
             } finally {
-                lock.unlock();
+                reentrantLock.unlock();
             }
         }
 
         // 卖货
         public void sale() {
-            lock.lock();
+            reentrantLock.lock();
             try {
                 if (product <= 0) {
-                    System.out.println("缺货！");
+                    System.out.println("货架缺货！");
                     try {
                         condition.await();
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
-                System.out.println(Thread.currentThread().getName() + " : "
+                System.out.println(Thread.currentThread().getName() + "购买了一件商品，剩余: "
                         + --product);
                 condition.signalAll();
             } finally {
-                lock.unlock();
+                reentrantLock.unlock();
             }
         }
     }
@@ -59,19 +64,19 @@ public class ProducerAndConsumerForLockTest {
     static class Producer implements Runnable {
         private Clerk clerk;
 
-        public Producer(Clerk clerk) {
+        Producer(Clerk clerk) {
             this.clerk = clerk;
         }
 
         @Override
         public void run() {
             for (int i = 0; i < 20; i++) {
+                clerk.get();
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(new Random().nextInt(500));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                clerk.get();
             }
         }
     }
@@ -80,7 +85,7 @@ public class ProducerAndConsumerForLockTest {
     static class Consumer implements Runnable {
         private Clerk clerk;
 
-        public Consumer(Clerk clerk) {
+        Consumer(Clerk clerk) {
             this.clerk = clerk;
         }
 
@@ -88,16 +93,21 @@ public class ProducerAndConsumerForLockTest {
         public void run() {
             for (int i = 0; i < 20; i++) {
                 clerk.sale();
+                try {
+                    Thread.sleep(new Random().nextInt(500));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
     public static void main(String[] args) {
         Clerk clerk = new Clerk();
-        Producer pro = new Producer(clerk);
-        Consumer con = new Consumer(clerk);
-        new Thread(pro, "生产者 A").start();
-        new Thread(con, "消费者 B").start();
+        Producer producer = new Producer(clerk);
+        Consumer consumer = new Consumer(clerk);
+        new Thread(producer, "生产者A").start();
+        new Thread(consumer, "消费者B").start();
 //		 new Thread(pro, "生产者 C").start();
 //		 new Thread(con, "消费者 D").start();
     }

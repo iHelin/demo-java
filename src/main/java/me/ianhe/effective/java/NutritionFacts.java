@@ -9,6 +9,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @since 2017/11/27 14:24
  */
 public class NutritionFacts {
+
     private final int servingSize;
     private final int servings;
     private final int calories;
