@@ -9,7 +9,6 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <spring.version>4.3.9.RELEASE</spring.version>
     </properties>
     <!--spring版本统一-->
     <dependencyManagement>
@@ -17,7 +16,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
-                <version>${spring.version}</version>
+                <version>4.3.9.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
