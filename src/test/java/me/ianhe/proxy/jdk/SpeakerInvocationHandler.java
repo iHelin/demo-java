@@ -4,22 +4,22 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * 代理类
+ * Speaker代理类
  *
  * @author iHelin
  * @since 2017-01-03 16:39
  */
-public class MyInvocationHandler implements InvocationHandler {
+public class SpeakerInvocationHandler implements InvocationHandler {
 
-    private Object target;
+    private Speaker target;
 
-    public MyInvocationHandler(Object target) {
+    public SpeakerInvocationHandler(Speaker target) {
         this.target = target;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("method :" + method.getName() + "() is invoked!");
+        System.out.println("before:" + method.getName() + "() will be invoked!");
         Object res = method.invoke(target, args);
         System.out.println("After...");
         return res;

@@ -1,6 +1,8 @@
 package me.ianhe.exception;
 
 /**
+ * 异常测试
+ *
  * @author iHelin
  * @since 2017/11/20 18:19
  */
@@ -23,9 +25,29 @@ public class ExceptionTest {
             bar();
         } catch (Exception e) {
             e.printStackTrace();
+//            System.out.println("异常均被捕获");
         } finally {
             System.out.println("12345");
         }
         System.out.println("program is still running here!");
+    }
+
+    static class BlogAppException extends Exception {
+
+        private static final long serialVersionUID = -435295594928910256L;
+
+        /**
+         * 可以给自定义异常增加成员变量，用以保存额外的异常信息
+         */
+        private String command;
+
+        public BlogAppException(String command) {
+            this.command = command;
+        }
+
+        @Override
+        public String toString() {
+            return "Exception happened when executing command " + command;
+        }
     }
 }

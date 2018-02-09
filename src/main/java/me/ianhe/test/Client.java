@@ -11,27 +11,26 @@ public class Client {
         base.fun(100, 50);
         //Sub sub = new Sub();
         //sub.fun(100, 50);
-
-    }
-}
-
-class Base {
-    Base() {
-        System.out.println("Base Constructor");
     }
 
-    void fun(int price, int... discounts) {
-        System.out.println("Base......fun");
-    }
-}
+    static class Base {
+        Base() {
+            System.out.println("Base Constructor");
+        }
 
-class Sub extends Base {
-    Sub() {
-        System.out.println("Sub Constructor");
+        void fun(int price, int... discounts) {
+            System.out.println("Base......fun");
+        }
     }
 
-    @Override
-    void fun(int price, int[] discounts) {
-        System.out.println("Sub......fun");
+    static class Sub extends Base {
+        Sub() {
+            System.out.println("Sub Constructor");
+        }
+
+        @Override
+        void fun(int price, int[] discounts) {
+            System.out.println("Sub......fun");
+        }
     }
 }

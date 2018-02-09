@@ -70,10 +70,9 @@ public class Main {
             if (jcount > ccount) {
                 System.out.print("J ");
             } else {
-                System.out.println("B ");
+                System.out.print("B ");
             }
         }
-
 
         if (bccount > bbcount) {
             if (bccount > bjcount) {
@@ -92,10 +91,10 @@ public class Main {
                 System.out.print("B");
             }
         } else {
-            if (bjcount > bccount) {
+            if (bjcount > bbcount) {
                 System.out.print("J");
             } else {
-                System.out.println("B");
+                System.out.print("B");
             }
         }
     }
