@@ -8,6 +8,7 @@ import java.io.IOException;
 /**
  * java.io.File类用于表示文件（目录）
  * File类只用于表示文件（目录）的信息（名称、大小等），不能用于文件内容的访问
+ * 新建、删除、重命名、上层目录等等的操作
  *
  * @author iHelin
  * @since 2017/8/3 15:05
@@ -15,13 +16,13 @@ import java.io.IOException;
 public class FileTest {
 
     /**
-     * 文件处理示例
+     * 文件夹测试
      *
      * @author iHelin
      * @since 2017/8/11 16:52
      */
     @Test
-    public void test() {
+    public void fileFolderTest() {
         File fileFolder = new File("demo/test");
         if (!fileFolder.exists())
             fileFolder.mkdirs();
@@ -35,6 +36,18 @@ public class FileTest {
         System.out.println("fileFolder.getName():" + fileFolder.getName());
         System.out.println("fileFolder.getParent():" + fileFolder.getParent());
 
+
+    }
+
+    /**
+     * 文件测试
+     *
+     * @author iHelin
+     * @since 2018/2/9 14:30
+     */
+    @Test
+    public void fileTest() {
+        File fileFolder = new File("demo/test");
         File file = new File(fileFolder, "testFile.txt");
         if (!file.exists()) {
             try {
@@ -46,6 +59,7 @@ public class FileTest {
             }
         }
         System.out.println("file.getName():" + file.getName());
+        System.out.println(file.getParentFile().getParent());
         System.out.println("file.getFreeSpace():" + file.getFreeSpace() / (1024.0f * 1024 * 1024) + "G");
         System.out.println("该分区大小" + file.getTotalSpace() / (1000.0f * 1000 * 1000) + "G");
     }

@@ -9,9 +9,10 @@ import java.io.File;
  * @since 2017/8/3 15:23
  */
 public class FileUtilsTest {
+
     @Test
     public void listDirectory() throws Exception {
-        FileUtils.listDirectory(new File("/Users/iHelin/Music/网易云音乐"));
+        FileUtils.listDirectory(new File("/Users/iHelin/OneDrive/音乐"));
     }
 
 }
