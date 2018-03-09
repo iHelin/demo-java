@@ -114,9 +114,9 @@ public class BufferTest {
         //4. 利用get()读取缓冲数据
         byte[] dst = new byte[byteBuffer.limit()];
         byteBuffer.get(dst);
+        System.out.println("-----------get()-----------------");
         System.out.println(new String(dst, 0, dst.length));
 
-        System.out.println("-----------get()-----------------");
         System.out.println(byteBuffer.position());
         System.out.println(byteBuffer.limit());
         System.out.println(byteBuffer.capacity());
