@@ -16,27 +16,24 @@ public class TransactionManager {
         this.dataSource = dataSource;
     }
 
-    private Connection getConnection() throws SQLException {
-        return SingleThreadConnectionHolder.getConnection(dataSource);
-    }
-
     public void start() throws SQLException {
-        Connection connection = getConnection();
+        Connection connection = SingleThreadConnectionHolder.getConnection(dataSource);
         connection.setAutoCommit(false);
     }
 
     public void rollback() {
-        Connection connection = null;
+        Connection connection;
         try {
-            connection = getConnection();
+            connection = SingleThreadConnectionHolder.getConnection(dataSource);
             connection.rollback();
         } catch (SQLException e) {
+            System.out.println("数据回滚失败");
             e.printStackTrace();
         }
     }
 
     public void close() throws SQLException {
-        Connection connection = getConnection();
+        Connection connection = SingleThreadConnectionHolder.getConnection(dataSource);
         connection.setAutoCommit(true);
         connection.close();
     }

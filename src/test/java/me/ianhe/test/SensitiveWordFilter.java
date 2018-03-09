@@ -6,13 +6,14 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * 敏感词测试
+ *
  * @author iHelin
  * @since 2018/2/27 17:42
  */
 public class SensitiveWordFilter {
 
-    public static int minMatchType = 1;      //最小匹配规则
-    public static int maxMatchType = 2;      //最大匹配规则
+    public static final int MATCH_TYPE = 1;      //最小匹配规则
 
     /**
      * 判断文字是否包含敏感字符
@@ -112,7 +113,7 @@ public class SensitiveWordFilter {
                 if ("1".equals(currentMap.get("isEnd"))) {
                     //如果为最后一个匹配规则,结束循环，返回匹配标识数
                     flag = true;       //结束标志位为true
-                    if (SensitiveWordFilter.minMatchType == matchType) {
+                    if (SensitiveWordFilter.MATCH_TYPE == matchType) {
                         //最小规则，直接返回,最大规则还需继续查找
                         break;
                     }

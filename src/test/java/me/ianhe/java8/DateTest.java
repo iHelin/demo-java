@@ -1,16 +1,16 @@
-package me.ianhe.test;
+package me.ianhe.java8;
 
 import java.time.*;
 
 /**
  * @author iHelin
- * @since 2018/3/6 21:23
+ * @since 2018/3/9 17:13
  */
-public class TestA {
+public class DateTest {
 
     public static void main(String[] args) {
-        System.out.println(1.0/0);
-        System.out.println(0.0/0);
+        System.out.println(1.0 / 0);
+        System.out.println(0.0 / 0);
         System.out.println(Double.POSITIVE_INFINITY);
         System.out.println(Double.POSITIVE_INFINITY);
         System.out.println(Double.NaN);
@@ -24,4 +24,5 @@ public class TestA {
         Clock clock = Clock.systemUTC();
         System.out.println(clock.instant());
     }
+
 }

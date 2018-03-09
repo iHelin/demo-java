@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 模拟微信红包生成，以分为单位
+ * 模拟微信红包生成算法，以分为单位
  *
  * @author iHelin
  * @since 2018/3/2 13:45
