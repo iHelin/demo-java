@@ -2,6 +2,8 @@ package me.ianhe.juc;
 
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * 一、volatile 关键字：当多个线程进行操作共享数据时，可以保证内存中的数据可见。
  * 相较于 synchronized 是一种较为轻量级的同步策略。
@@ -14,6 +16,20 @@ import org.junit.Test;
  * @since 2017/11/23 14:10
  */
 public class VolatileTest {
+
+    @Test
+    public void test() {
+        ThreadDemo td = new ThreadDemo();
+        new Thread(td).start();
+
+        while (true) {
+            if (td.isFlag()) {
+                System.out.println(Thread.currentThread().getName() + "------------------");
+                break;
+            }
+        }
+    }
+
     static class ThreadDemo implements Runnable {
 
         private volatile boolean flag = false;
@@ -21,7 +37,8 @@ public class VolatileTest {
         @Override
         public void run() {
             try {
-                Thread.sleep(200);
+                TimeUnit.MILLISECONDS.sleep(200);
+//                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -39,17 +56,5 @@ public class VolatileTest {
 
     }
 
-    @Test
-    public void test() {
-        ThreadDemo td = new ThreadDemo();
-        new Thread(td).start();
-
-        while (true) {
-            if (td.isFlag()) {
-                System.out.println(Thread.currentThread().getName() + "------------------");
-                break;
-            }
-        }
-    }
 
 }

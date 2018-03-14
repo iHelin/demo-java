@@ -19,7 +19,7 @@ public class LockTest {
 
         @Override
         public void run() {
-            lock.lock();
+            /*lock.lock();
             try {
                 while (ticket > 0) {
                     try {
@@ -31,6 +31,21 @@ public class LockTest {
                 }
             } finally {
                 lock.unlock();
+            }*/
+            while (true) {
+                lock.lock();
+                try {
+                    if (ticket > 0) {
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println(Thread.currentThread().getName() + "完成售票，余票为：" + --ticket);
+                    }
+                } finally {
+                    lock.unlock();
+                }
             }
         }
     }

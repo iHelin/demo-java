@@ -20,7 +20,7 @@ public class ForkJoinPoolTest {
         private static final long serialVersionUID = -259195479995561737L;
         private long start;
         private long end;
-        private static final long THURSHOLD = 10000L;  //临界值
+        private static final long THRESHOLD = 10000L;  //临界值
 
         public ForkJoinSumCalculate(long start, long end) {
             this.start = start;
@@ -30,7 +30,7 @@ public class ForkJoinPoolTest {
         @Override
         protected Long compute() {
             long length = end - start;
-            if (length <= THURSHOLD) {
+            if (length <= THRESHOLD) {
                 long sum = 0L;
                 for (long i = start; i <= end; i++) {
                     sum += i;

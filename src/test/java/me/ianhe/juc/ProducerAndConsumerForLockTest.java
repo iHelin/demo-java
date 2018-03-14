@@ -12,18 +12,18 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ProducerAndConsumerForLockTest {
 
-    static class Clerk {
+    private static class Clerk {
         private int product = 0;
-        private int threshold = 3;
+        private int threshold = 5;
         private ReentrantLock reentrantLock = new ReentrantLock();
         private Condition condition = reentrantLock.newCondition();
 
-        // 进货
+        // 进货/上架
         public void get() {
             reentrantLock.lock();
             try {
-                if (product >= threshold) {
-                    // 为了避免虚假唤醒，应该总是使用在循环中。
+                // 为了避免虚假唤醒，应该总是使用在循环中。
+                while (product >= threshold) {
                     System.out.println("货架已满！");
                     try {
                         condition.await();
@@ -43,7 +43,8 @@ public class ProducerAndConsumerForLockTest {
         public void sale() {
             reentrantLock.lock();
             try {
-                if (product <= 0) {
+                // 为了避免虚假唤醒，应该总是使用在循环中。
+                while (product <= 0) {
                     System.out.println("货架缺货！");
                     try {
                         condition.await();
@@ -106,10 +107,10 @@ public class ProducerAndConsumerForLockTest {
         Clerk clerk = new Clerk();
         Producer producer = new Producer(clerk);
         Consumer consumer = new Consumer(clerk);
-        new Thread(producer, "生产者A").start();
-        new Thread(consumer, "消费者B").start();
-//		 new Thread(pro, "生产者 C").start();
-//		 new Thread(con, "消费者 D").start();
+        new Thread(producer, "生产者 A").start();
+        new Thread(consumer, "消费者 B").start();
+        new Thread(consumer, "消费者 D").start();
+        new Thread(producer, "生产者 C").start();
     }
 
 }

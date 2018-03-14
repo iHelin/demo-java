@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * 二、原子变量：在 java.util.concurrent.atomic 包下提供了一些原子变量。
  * 1. volatile 保证内存可见性
- * 2. CAS（Compare-And-Swap） 算法保证数据变量的原子性
+ * 2. CAS（Compare-And-Swap）算法保证数据变量的原子性
  * CAS 算法是硬件对于并发操作的支持
  * CAS 包含了三个操作数：
  * ①内存值  V

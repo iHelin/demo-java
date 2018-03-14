@@ -35,7 +35,7 @@ public class CallableTest {
         new Thread(result).start();
         //2.接收线程运算后的结果
         try {
-            //FutureTask 可用于闭锁
+            //FutureTask 可用于闭锁 与闭锁效果类似
             Integer sum = result.get();
             System.out.println(sum);
             System.out.println("------------------------------------");
