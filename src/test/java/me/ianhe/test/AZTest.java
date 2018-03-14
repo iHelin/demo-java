@@ -1,5 +1,7 @@
 package me.ianhe.test;
 
+import java.util.Scanner;
+
 /**
  * @author iHelin
  * @since 2018/3/12 22:54
@@ -7,7 +9,8 @@ package me.ianhe.test;
 public class AZTest {
 
     public static void main(String[] args) {
-        System.out.println(getKey(27));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(getKey(scanner.nextInt()));
     }
 
     public static String getKey(int index) {
