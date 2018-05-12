@@ -1,5 +1,7 @@
 package me.ianhe.model;
 
+import me.ianhe.annotation.Human;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -56,6 +58,7 @@ public class Student implements Serializable {
     }
 
     @Override
+    @Human
     public String toString() {
         return "Student [studentNo=" + studentNo + ", studentName=" + studentName + ", studentAge=" + studentAge + "]";
     }
