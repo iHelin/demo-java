@@ -1,4 +1,4 @@
-package me.ianhe.netty.nio;
+package me.ianhe.netty.io.aio;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ public class TimeServer {
 
     public static void main(String[] args) throws IOException {
         int port = 8080;
-        MultiplexerTimeServer timeServer = new MultiplexerTimeServer(port);
-        new Thread(timeServer, "NIO-MultiplexerTimeServer-001").start();
+        AsyncTimeServerHandler timeServer = new AsyncTimeServerHandler(port);
+        new Thread(timeServer, "AIO-AsyncTimeServerHandler-001").start();
     }
 }

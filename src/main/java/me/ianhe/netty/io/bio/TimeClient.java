@@ -1,4 +1,4 @@
-package me.ianhe.netty.bio;
+package me.ianhe.netty.io.bio;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package me.ianhe.netty.aio;
+package me.ianhe.netty.io.aio;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;

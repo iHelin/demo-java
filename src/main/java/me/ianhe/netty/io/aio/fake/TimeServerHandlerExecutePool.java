@@ -1,4 +1,4 @@
-package me.ianhe.netty.aio.fake;
+package me.ianhe.netty.io.aio.fake;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;

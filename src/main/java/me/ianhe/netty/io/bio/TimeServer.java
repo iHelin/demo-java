@@ -1,4 +1,4 @@
-package me.ianhe.netty.bio;
+package me.ianhe.netty.io.bio;
 
 import java.io.IOException;
 import java.net.ServerSocket;

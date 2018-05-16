@@ -1,4 +1,4 @@
-package me.ianhe.netty.nio;
+package me.ianhe.netty.io.nio;
 
 /**
  * @author iHelin

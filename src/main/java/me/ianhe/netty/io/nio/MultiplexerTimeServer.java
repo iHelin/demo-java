@@ -1,4 +1,4 @@
-package me.ianhe.netty.nio;
+package me.ianhe.netty.io.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
