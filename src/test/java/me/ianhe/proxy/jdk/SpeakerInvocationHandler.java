@@ -19,7 +19,7 @@ public class SpeakerInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("before:" + method.getName() + "() will be invoked!");
+        System.out.println("Before:" + method.getName() + "() will be invoked!");
         Object res = method.invoke(target, args);
         System.out.println("After...");
         return res;

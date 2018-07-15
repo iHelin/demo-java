@@ -24,12 +24,12 @@ public class JDKProxyTest {
     @Test
     public void test() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
             InstantiationException {
-        Class<?> proxyClass = Proxy.getProxyClass(JDKProxyTest.class.getClassLoader(), Speaker.class);
+        final Speaker speakerOri = new SpeakerImpl();
+        Class<?> proxyClass = Proxy.getProxyClass(speakerOri.getClass().getClassLoader(), speakerOri.getClass().getInterfaces());
         final Constructor<?> constructor = proxyClass.getConstructor(InvocationHandler.class);
-        final InvocationHandler invocationHandler = new SpeakerInvocationHandler(new SpeakerImpl());
+        final InvocationHandler invocationHandler = new SpeakerInvocationHandler(speakerOri);
         Speaker speaker = (Speaker) constructor.newInstance(invocationHandler);
         speaker.sayHello();
-
     }
 
     /**
@@ -40,8 +40,10 @@ public class JDKProxyTest {
      */
     @Test
     public void test2() {
-        final InvocationHandler invocationHandler = new SpeakerInvocationHandler(new SpeakerImpl());
-        Speaker speaker = (Speaker) Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{Speaker.class}, invocationHandler);
+        final Speaker speakerOri = new SpeakerImpl();
+        final InvocationHandler invocationHandler = new SpeakerInvocationHandler(speakerOri);
+        Speaker speaker = (Speaker) Proxy.newProxyInstance(Speaker.class.getClassLoader(),
+                new Class[]{Speaker.class}, invocationHandler);
         speaker.sayHello();
     }
 }

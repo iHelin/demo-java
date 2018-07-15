@@ -6,6 +6,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 伪异步io服务端处理线程池
+ *
  * @author iHelin
  * @since 2018/5/15 20:25
  */

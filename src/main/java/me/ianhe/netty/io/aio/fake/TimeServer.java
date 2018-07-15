@@ -1,7 +1,5 @@
 package me.ianhe.netty.io.aio.fake;
 
-import me.ianhe.netty.io.bio.TimeServerHandler;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

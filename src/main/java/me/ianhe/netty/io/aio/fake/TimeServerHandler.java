@@ -5,40 +5,52 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Date;
 
 /**
- * 伪异步io客户端
+ * 伪异步io服务端处理器
  *
  * @author iHelin
- * @since 2018/5/15 20:05
+ * @since 2018/5/15 19:44
  */
-public class TimeClient {
+public class TimeServerHandler implements Runnable {
 
-    public static void main(String[] args) {
-        int port = 8080;
-        Socket socket = null;
+    private Socket socket;
+
+    public TimeServerHandler(Socket socket) {
+        this.socket = socket;
+    }
+
+    @Override
+    public void run() {
         BufferedReader in = null;
         PrintWriter out = null;
         try {
-            socket = new Socket("127.0.0.1", port);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
-            out.println("QUERY TIME ORDER");
-            System.out.println("Send order 2 server succeed");
-            String resp = in.readLine();
-            System.out.println("Now is :" + resp);
-        } catch (Exception e) {
-        } finally {
-            if (out != null) {
-                out.close();
-                out = null;
+            String currentTime;
+            String body;
+            while (true) {
+                body = in.readLine();
+                if (body == null) {
+                    break;
+                }
+                System.out.println("The time server receive order :" + body);
+                currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new Date(System.currentTimeMillis()).toString() :
+                        "BAD ORDER";
+                out.println(currentTime);
             }
+        } catch (Exception e) {
             if (in != null) {
                 try {
                     in.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
+            }
+            if (out != null) {
+                out.close();
+                out = null;
             }
             if (socket != null) {
                 try {
