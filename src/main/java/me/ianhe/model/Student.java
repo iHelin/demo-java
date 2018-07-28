@@ -58,7 +58,7 @@ public class Student implements Serializable {
     }
 
     @Override
-    @Human
+    @Human(studentAge = 10)
     public String toString() {
         return "Student [studentNo=" + studentNo + ", studentName=" + studentName + ", studentAge=" + studentAge + "]";
     }
