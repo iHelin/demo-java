@@ -17,25 +17,25 @@ public class ABCAlternateTest {
     static class AlternateDemo {
 
         /**
-         * 当前正在执行线程的标记，1代表A，2代表B，3代表C，从A开始
+         * 当前正在执行线程的标记，从A开始
          */
-        private int number = 1;
+        private char currentTag = 'A';
 
         private Lock lock = new ReentrantLock();
-        private Condition condition1 = lock.newCondition();
-        private Condition condition2 = lock.newCondition();
-        private Condition condition3 = lock.newCondition();
+        private Condition conditionA = lock.newCondition();
+        private Condition conditionB = lock.newCondition();
+        private Condition conditionC = lock.newCondition();
 
         void loopA() {
             lock.lock();
             try {
-                if (number != 1) {
-                    condition1.await();
+                if (currentTag != 'A') {
+                    conditionA.await();
                 }
                 System.out.print(Thread.currentThread().getName());
-                //唤醒2
-                number = 2;
-                condition2.signal();
+                //唤醒B
+                currentTag = 'B';
+                conditionB.signal();
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -46,13 +46,13 @@ public class ABCAlternateTest {
         void loopB() {
             lock.lock();
             try {
-                if (number != 2) {
-                    condition2.await();
+                if (currentTag != 'B') {
+                    conditionB.await();
                 }
                 System.out.print(Thread.currentThread().getName());
-                //唤醒3
-                number = 3;
-                condition3.signal();
+                //唤醒C
+                currentTag = 'C';
+                conditionC.signal();
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -63,13 +63,13 @@ public class ABCAlternateTest {
         void loopC() {
             lock.lock();
             try {
-                if (number != 3) {
-                    condition3.await();
+                if (currentTag != 'C') {
+                    conditionC.await();
                 }
-                System.out.println(Thread.currentThread().getName());
-                //唤醒1
-                number = 1;
-                condition1.signal();
+                System.out.print(Thread.currentThread().getName());
+                //唤醒A
+                currentTag = 'A';
+                conditionA.signal();
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -79,19 +79,20 @@ public class ABCAlternateTest {
     }
 
     public static void main(String[] args) {
+        int loopCount = 10;
         AlternateDemo ad = new AlternateDemo();
         new Thread(() -> {
-            for (int i = 1; i <= 20; i++) {
+            for (int i = 1; i <= loopCount; i++) {
                 ad.loopA();
             }
         }, "A").start();
         new Thread(() -> {
-            for (int i = 1; i <= 20; i++) {
+            for (int i = 1; i <= loopCount; i++) {
                 ad.loopB();
             }
         }, "B").start();
         new Thread(() -> {
-            for (int i = 1; i <= 20; i++) {
+            for (int i = 1; i <= loopCount; i++) {
                 ad.loopC();
             }
         }, "C").start();
