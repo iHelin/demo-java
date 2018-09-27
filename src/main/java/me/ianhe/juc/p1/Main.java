@@ -1,7 +1,7 @@
 package me.ianhe.juc.p1;
 
 /**
- * @author Ian He
+ * @author iHelin
  * @since 2018/9/22 22:56
  */
 public class Main {

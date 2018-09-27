@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @author Ian He
+ * @author iHelin
  * @since 2018/9/22 22:58
  */
 public class Gate {

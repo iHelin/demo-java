@@ -45,8 +45,8 @@ public class Stage extends Thread {
         mrCheng.setName("程咬金");
         System.out.println(getName() + "：程咬金的理想就是结束战争，是百姓安居乐业~！");
         //
-        armyTaskOfSuiDynasty.keepRunning = false;
-        armyTaskOfRevolt.keepRunning = false;
+        armyTaskOfSuiDynasty.setKeepRunning(false);
+        armyTaskOfRevolt.setKeepRunning(false);
 
         try {
             //armyOfSuiDynasty.join();

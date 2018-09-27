@@ -1,4 +1,4 @@
-package me.ianhe.my.dataSource;
+package me.ianhe.my.datasource;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

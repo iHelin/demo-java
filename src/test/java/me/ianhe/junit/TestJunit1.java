@@ -16,7 +16,6 @@ public class TestJunit1 {
     public void testAdd() {
         //test data
         int num = 5;
-        String temp = null;
         String str = "Junit is working fine";
 
         //check for equality

@@ -28,8 +28,10 @@ public class TestJunit3 extends TestResult {
     }
 
     // Marks that the test run should stop.
+    @Override
     public synchronized void stop() {
         //stop the test here
+        System.out.println("end");
     }
 
 }

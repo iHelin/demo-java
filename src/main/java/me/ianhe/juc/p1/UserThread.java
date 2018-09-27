@@ -1,7 +1,7 @@
 package me.ianhe.juc.p1;
 
 /**
- * @author Ian He
+ * @author iHelin
  * @since 2018/9/22 23:01
  */
 public class UserThread extends Thread {

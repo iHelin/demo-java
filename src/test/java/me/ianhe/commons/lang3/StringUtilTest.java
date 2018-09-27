@@ -1,4 +1,4 @@
-package me.ianhe.commons;
+package me.ianhe.commons.lang3;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;

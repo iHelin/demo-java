@@ -1,4 +1,4 @@
-package me.ianhe.my.dataSource;
+package me.ianhe.my.datasource;
 
 /**
  * @author iHelin
