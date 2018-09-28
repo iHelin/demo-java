@@ -3,6 +3,7 @@ package me.ianhe.io;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * FileInputStream 是文件输入流，它继承于InputStream。
@@ -54,7 +55,7 @@ public class FileInputStreamAndFileOutputStreamTest {
         fileOutputStream.write(a >>> 16);
         fileOutputStream.write(a >>> 8);
         fileOutputStream.write(a);
-        byte[] utf8 = "中国".getBytes("utf-8");
+        byte[] utf8 = "中国".getBytes(StandardCharsets.UTF_8);
         fileOutputStream.write(utf8);
         fileOutputStream.close();
     }
@@ -109,7 +110,7 @@ public class FileInputStreamAndFileOutputStreamTest {
         char c1 = (char) fileInputStream.read();
         System.out.println("c1=" + c1);
 
-        // 测试skip(long byteCount)，跳过4个字节
+        // 测试skip(long byteCount)，跳过25个字节
         fileInputStream.skip(25);
 
         // 测试read(byte[] buffer, int byteOffset, int byteCount)
