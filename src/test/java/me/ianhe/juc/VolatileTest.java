@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
  * 相较于 synchronized 是一种较为轻量级的同步策略。
  * <p>
  * 注意：
- * 1. volatile 不具备“互斥性”
- * 2. volatile 不能保证变量的“原子性”
+ * 1. volatile 不具备"互斥性"
+ * 2. volatile 不能保证变量的"原子性"
  *
  * @author iHelin
  * @since 2017/11/23 14:10
