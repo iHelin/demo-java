@@ -8,9 +8,21 @@ package me.ianhe.juc;
  */
 public class CompareAndSwapTest {
 
+    public static void main(String[] args) {
+        final CompareAndSwap cas = new CompareAndSwap();
+
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                int expectedValue = cas.get();
+                boolean b = cas.compareAndSet(expectedValue, (int) (Math.random() * 101));
+                System.out.println(b);
+            }).start();
+        }
+    }
+
     static class CompareAndSwap {
 
-        private int value;
+        private volatile int value;
 
         /**
          * 获取内存值
@@ -24,41 +36,29 @@ public class CompareAndSwapTest {
         /**
          * 比较
          *
-         * @param expectedValue
+         * @param expectedValue 预估值
          * @param newValue
          * @return
          */
         synchronized int compareAndSwap(int expectedValue, int newValue) {
-            int oldValue = value;
+            int val = get();
 
-            if (oldValue == expectedValue) {
+            if (val == expectedValue) {
                 this.value = newValue;
             }
 
-            return oldValue;
+            return val;
         }
 
         /**
          * 设置
          *
-         * @param expectedValue
-         * @param newValue
+         * @param expectedValue 预估值
+         * @param newValue      新值
          * @return
          */
         synchronized boolean compareAndSet(int expectedValue, int newValue) {
             return expectedValue == compareAndSwap(expectedValue, newValue);
-        }
-    }
-
-    public static void main(String[] args) {
-        final CompareAndSwap cas = new CompareAndSwap();
-
-        for (int i = 0; i < 10; i++) {
-            new Thread(() -> {
-                int expectedValue = cas.get();
-                boolean b = cas.compareAndSet(expectedValue, (int) (Math.random() * 101));
-                System.out.println(b);
-            }).start();
         }
     }
 
