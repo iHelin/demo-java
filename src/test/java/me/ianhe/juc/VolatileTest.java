@@ -24,7 +24,7 @@ public class VolatileTest {
 
         while (true) {
             if (td.isFlag()) {
-                System.out.println(Thread.currentThread().getName() + "------------------");
+                System.out.println("------------------");
                 break;
             }
         }
@@ -32,18 +32,21 @@ public class VolatileTest {
 
     static class ThreadDemo implements Runnable {
 
+        /**
+         * 两个线程共享的变量
+         * volatile：子线程修改为true，主线程可见
+         */
         private volatile boolean flag = false;
 
         @Override
         public void run() {
             try {
                 TimeUnit.MILLISECONDS.sleep(200);
-//                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             setFlag(true);
-            System.out.println(Thread.currentThread().getName() + " set flag=" + isFlag());
+            System.out.println("set flag=" + isFlag());
         }
 
         boolean isFlag() {
