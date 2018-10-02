@@ -11,6 +11,13 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class LockTest {
 
+    public static void main(String[] args) {
+        Ticket ticket = new Ticket();
+        for (int i = 1; i <= 3; i++) {
+            new Thread(ticket, i + "号窗口").start();
+        }
+    }
+
     static class Ticket implements Runnable {
 
         private int ticket = 100;
@@ -23,7 +30,7 @@ public class LockTest {
             try {
                 while (ticket > 0) {
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(200);
                         System.out.println(Thread.currentThread().getName() + "完成售票，余票为：" + --ticket);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -37,11 +44,13 @@ public class LockTest {
                 try {
                     if (ticket > 0) {
                         try {
-                            Thread.sleep(50);
+                            Thread.sleep(200);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         System.out.println(Thread.currentThread().getName() + "完成售票，余票为：" + --ticket);
+                    } else {
+                        break;
                     }
                 } finally {
                     lock.unlock();
@@ -50,10 +59,4 @@ public class LockTest {
         }
     }
 
-    public static void main(String[] args) {
-        Ticket ticket = new Ticket();
-        for (int i = 1; i <= 3; i++) {
-            new Thread(ticket, i + "号窗口").start();
-        }
-    }
 }
