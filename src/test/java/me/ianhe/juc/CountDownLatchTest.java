@@ -12,27 +12,6 @@ import java.util.concurrent.CountDownLatch;
  */
 public class CountDownLatchTest {
 
-    static class EmployeeThread implements Runnable {
-
-        private CountDownLatch latch;
-
-        public EmployeeThread(CountDownLatch latch) {
-            this.latch = latch;
-        }
-
-        @Override
-        public void run() {
-            try {
-                System.out.println(Thread.currentThread().getName() + " 到达会议室....");
-                //员工到达会议室 count - 1
-            } finally {
-                latch.countDown();
-            }
-
-        }
-
-    }
-
     /**
      * 老板等待员工开会示例
      *
@@ -54,4 +33,26 @@ public class CountDownLatchTest {
         }
         System.out.println("所有人都已经到齐了，开会吧...");
     }
+
+    static class EmployeeThread implements Runnable {
+
+        private CountDownLatch latch;
+
+        public EmployeeThread(CountDownLatch latch) {
+            this.latch = latch;
+        }
+
+        @Override
+        public void run() {
+            try {
+                System.out.println(Thread.currentThread().getName() + " 到达会议室....");
+                //员工到达会议室 count - 1
+            } finally {
+                latch.countDown();
+            }
+
+        }
+
+    }
+
 }

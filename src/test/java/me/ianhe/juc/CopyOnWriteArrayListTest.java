@@ -1,5 +1,6 @@
 package me.ianhe.juc;
 
+import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -11,9 +12,21 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class CopyOnWriteArrayListTest {
 
+    public static void main(String[] args) {
+        HelloThread ht = new HelloThread();
+
+        for (int i = 0; i < 5; i++) {
+            new Thread(ht).start();
+        }
+    }
+
     static class HelloThread implements Runnable {
 
-//        private static List<String> list = Collections.synchronizedList(new ArrayList<>());
+        //        private static List<String> list = Collections.synchronizedList(new ArrayList<>());
+
+        /**
+         * 没有了并发修改异常，效率不高
+         */
         private static CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
 
         static {
@@ -25,21 +38,14 @@ public class CopyOnWriteArrayListTest {
         @Override
         public void run() {
 
-            for (String aList : list) {
-                System.out.println(aList);
+            Iterator<String> iterator = list.iterator();
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next());
                 list.add("AA");
             }
 
         }
 
-    }
-
-    public static void main(String[] args) {
-        HelloThread ht = new HelloThread();
-
-        for (int i = 0; i < 5; i++) {
-            new Thread(ht).start();
-        }
     }
 
 }
