@@ -31,7 +31,7 @@ public class ProducerAndConsumerForLockTest {
         /**
          * 进货/上架
          */
-        public void get() {
+        void get() {
             reentrantLock.lock();
             try {
                 // 为了避免虚假唤醒，应该总是使用在循环中。
@@ -53,7 +53,7 @@ public class ProducerAndConsumerForLockTest {
         /**
          * 卖货
          */
-        public void sale() {
+        void sale() {
             reentrantLock.lock();
             try {
                 while (product <= 0) {

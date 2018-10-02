@@ -14,70 +14,6 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ABCAlternateTest {
 
-    static class AlternateDemo {
-
-        /**
-         * 当前正在执行线程的标记，从A开始
-         */
-        private char currentTag = 'A';
-
-        private Lock lock = new ReentrantLock();
-        private Condition conditionA = lock.newCondition();
-        private Condition conditionB = lock.newCondition();
-        private Condition conditionC = lock.newCondition();
-
-        void loopA() {
-            lock.lock();
-            try {
-                if (currentTag != 'A') {
-                    conditionA.await();
-                }
-                System.out.print(Thread.currentThread().getName());
-                //唤醒B
-                currentTag = 'B';
-                conditionB.signal();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                lock.unlock();
-            }
-        }
-
-        void loopB() {
-            lock.lock();
-            try {
-                if (currentTag != 'B') {
-                    conditionB.await();
-                }
-                System.out.print(Thread.currentThread().getName());
-                //唤醒C
-                currentTag = 'C';
-                conditionC.signal();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                lock.unlock();
-            }
-        }
-
-        void loopC() {
-            lock.lock();
-            try {
-                if (currentTag != 'C') {
-                    conditionC.await();
-                }
-                System.out.print(Thread.currentThread().getName());
-                //唤醒A
-                currentTag = 'A';
-                conditionA.signal();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                lock.unlock();
-            }
-        }
-    }
-
     public static void main(String[] args) {
         int loopCount = 10;
         AlternateDemo ad = new AlternateDemo();
@@ -97,5 +33,70 @@ public class ABCAlternateTest {
             }
         }, "C").start();
     }
+
+    static class AlternateDemo {
+
+        /**
+         * 当前正在执行线程的标记，从A开始
+         */
+        private char currentTag = 'A';
+
+        private Lock lock = new ReentrantLock();
+        private Condition conditionA = lock.newCondition();
+        private Condition conditionB = lock.newCondition();
+        private Condition conditionC = lock.newCondition();
+
+        void loopA() {
+            lock.lock();
+            try {
+                while (currentTag != 'A') {
+                    conditionA.await();
+                }
+                System.out.print(Thread.currentThread().getName());
+                //唤醒B
+                currentTag = 'B';
+                conditionB.signal();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+        }
+
+        void loopB() {
+            lock.lock();
+            try {
+                while (currentTag != 'B') {
+                    conditionB.await();
+                }
+                System.out.print(Thread.currentThread().getName());
+                //唤醒C
+                currentTag = 'C';
+                conditionC.signal();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+        }
+
+        void loopC() {
+            lock.lock();
+            try {
+                while (currentTag != 'C') {
+                    conditionC.await();
+                }
+                System.out.print(Thread.currentThread().getName());
+                //唤醒A
+                currentTag = 'A';
+                conditionA.signal();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+        }
+    }
+
 }
 
