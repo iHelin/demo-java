@@ -25,6 +25,36 @@ import java.util.concurrent.Future;
  */
 public class ThreadPoolTest {
 
+    public static void main(String[] args) throws Exception {
+        //1. 创建线程池
+        ExecutorService threadPool = Executors.newFixedThreadPool(5);
+        List<Future<Integer>> list = new ArrayList<>();
+
+        //2. 为线程池中的线程分配10个任务
+        for (int i = 0; i < 10; i++) {
+            Future<Integer> future = threadPool.submit(() -> {
+                int sum = 0;
+                for (int j = 0; j <= 100; j++) {
+                    sum += j;
+                }
+                return sum;
+            });
+            list.add(future);
+        }
+        for (Future<Integer> future : list) {
+            System.out.println(future.get());
+        }
+
+        ThreadPoolDemo tpd = new ThreadPoolDemo();
+
+        for (int i = 0; i < 10; i++) {
+            threadPool.submit(tpd);
+        }
+
+        //3. 关闭线程池
+        threadPool.shutdown();
+    }
+
     static class ThreadPoolDemo implements Runnable {
         private int i = 0;
 
@@ -34,35 +64,6 @@ public class ThreadPoolTest {
                 System.out.println(Thread.currentThread().getName() + " : " + i++);
             }
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        //1. 创建线程池
-        ExecutorService executor = Executors.newFixedThreadPool(5);
-        List<Future<Integer>> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Future<Integer> future = executor.submit(() -> {
-                int sum = 0;
-                for (int j = 0; j <= 100; j++) {
-                    sum += j;
-                }
-                return sum;
-            });
-            list.add(future);
-        }
-//        executor.shutdown();
-        for (Future<Integer> future : list) {
-            System.out.println(future.get());
-        }
-
-        ThreadPoolDemo tpd = new ThreadPoolDemo();
-
-        //2. 为线程池中的线程分配10个任务
-        for (int i = 0; i < 10; i++) {
-            executor.submit(tpd);
-        }
-        //3. 关闭线程池
-        executor.shutdown();
     }
 
 }

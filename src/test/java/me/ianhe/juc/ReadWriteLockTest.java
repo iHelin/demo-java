@@ -12,14 +12,27 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @since 2017/11/23 14:07
  */
 public class ReadWriteLockTest {
+
+    public static void main(String[] args) {
+        ReadWriteLockDemo rw = new ReadWriteLockDemo();
+
+        new Thread(() -> rw.set((int) (Math.random() * 101)), "Write:").start();
+
+        for (int i = 0; i < 100; i++) {
+            new Thread(rw::read, "Read:").start();
+        }
+    }
+
     static class ReadWriteLockDemo {
 
         private int number = 0;
 
         private ReadWriteLock lock = new ReentrantReadWriteLock();
 
-        //读
-        public void get() {
+        /**
+         * 读
+         */
+        void read() {
             lock.readLock().lock(); //上锁
 
             try {
@@ -29,26 +42,20 @@ public class ReadWriteLockTest {
             }
         }
 
-        //写
-        public void set(int number) {
+        /**
+         * 写
+         *
+         * @param number 待写入的值
+         */
+        void set(int number) {
             lock.writeLock().lock();
 
             try {
-                System.out.println(Thread.currentThread().getName());
+                System.out.println(Thread.currentThread().getName() + number);
                 this.number = number;
             } finally {
                 lock.writeLock().unlock();
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        ReadWriteLockDemo rw = new ReadWriteLockDemo();
-
-        new Thread(() -> rw.set((int) (Math.random() * 101)), "Write:").start();
-
-        for (int i = 0; i < 100; i++) {
-            new Thread(rw::get).start();
         }
     }
 
