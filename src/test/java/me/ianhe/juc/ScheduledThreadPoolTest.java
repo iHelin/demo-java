@@ -35,7 +35,7 @@ public class ScheduledThreadPoolTest {
                 int num = new Random().nextInt(100);//生成随机数
                 System.out.println(Thread.currentThread().getName() + " : " + num);
                 return num;
-            }, 1, TimeUnit.SECONDS);
+            }, 1L, TimeUnit.SECONDS);
 
             System.out.println(result.get());
         }

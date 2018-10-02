@@ -56,7 +56,7 @@ public class ThreadPoolTest {
     }
 
     static class ThreadPoolDemo implements Runnable {
-        private int i = 0;
+        private volatile int i = 0;
 
         @Override
         public void run() {
