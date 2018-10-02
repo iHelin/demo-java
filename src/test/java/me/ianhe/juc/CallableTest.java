@@ -14,34 +14,37 @@ import java.util.concurrent.FutureTask;
  * @since 2017/11/22 10:01
  */
 public class CallableTest {
+
+    public static void main(String[] args) {
+        ThreadDemo td = new ThreadDemo();
+        //1.执行 Callable 方式，需要 FutureTask 类的支持，用于接收运算结果。
+        FutureTask<Integer> result = new FutureTask<>(td);
+        new Thread(result).start();
+        //2.接收线程运算后的结果
+        try {
+            //FutureTask 可用于闭锁 与闭锁效果类似
+            System.out.println("------------------------------------");
+            Integer sum = result.get();
+            System.out.println("------------------------------------");
+            System.out.println(sum);
+            System.out.println("------------------------------------");
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
     static class ThreadDemo implements Callable<Integer> {
 
         @Override
         public Integer call() throws InterruptedException {
             Thread.sleep(1000);
             int sum = 0;
-            for (int i = 1; i <= 100; i++) {
+            for (int i = 1; i <= 10000; i++) {
                 sum += i;
             }
             return sum;
         }
 
-    }
-
-    public static void main(String[] args) {
-        ThreadDemo td = new ThreadDemo();
-        //1.执行 Callable 方式，需要 FutureTask 实现类的支持，用于接收运算结果。
-        FutureTask<Integer> result = new FutureTask<>(td);
-        new Thread(result).start();
-        //2.接收线程运算后的结果
-        try {
-            //FutureTask 可用于闭锁 与闭锁效果类似
-            Integer sum = result.get();
-            System.out.println(sum);
-            System.out.println("------------------------------------");
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
     }
 
 }
