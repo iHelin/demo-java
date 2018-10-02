@@ -15,6 +15,16 @@ import java.util.stream.LongStream;
  */
 public class ForkJoinPoolTest {
 
+    public static void main(String[] args) {
+        Instant start = Instant.now();
+        ForkJoinPool pool = new ForkJoinPool();
+        ForkJoinTask<Long> task = new ForkJoinSumCalculate(0L, 50000000000L);
+        Long sum = pool.invoke(task);
+        System.out.println(sum);
+        Instant end = Instant.now();
+        System.out.println("耗费时间为：" + Duration.between(start, end).toMillis());
+    }
+
     static class ForkJoinSumCalculate extends RecursiveTask<Long> {
 
         private static final long serialVersionUID = -259195479995561737L;
@@ -48,17 +58,6 @@ public class ForkJoinPoolTest {
 
     }
 
-
-    public static void main(String[] args) {
-        Instant start = Instant.now();
-        ForkJoinPool pool = new ForkJoinPool();
-        ForkJoinTask<Long> task = new ForkJoinSumCalculate(0L, 50000000000L);
-        Long sum = pool.invoke(task);
-        System.out.println(sum);
-        Instant end = Instant.now();
-        System.out.println("耗费时间为：" + Duration.between(start, end).toMillis());//166-1996-10590
-    }
-
     @Test
     public void test1() {
         Instant start = Instant.now();
@@ -68,7 +67,7 @@ public class ForkJoinPoolTest {
         }
         System.out.println(sum);
         Instant end = Instant.now();
-        System.out.println("耗费时间为：" + Duration.between(start, end).toMillis());//35-3142-15704
+        System.out.println("耗费时间为：" + Duration.between(start, end).toMillis());
     }
 
     //java8 新特性
@@ -80,7 +79,7 @@ public class ForkJoinPoolTest {
                 .reduce(0L, Long::sum);
         System.out.println(sum);
         Instant end = Instant.now();
-        System.out.println("耗费时间为：" + Duration.between(start, end).toMillis());//1536-8118
+        System.out.println("耗费时间为：" + Duration.between(start, end).toMillis());
     }
 
 }
