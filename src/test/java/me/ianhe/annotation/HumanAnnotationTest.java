@@ -1,6 +1,7 @@
 package me.ianhe.annotation;
 
 import me.ianhe.model.Student;
+import org.junit.Test;
 
 import java.lang.reflect.Method;
 
@@ -12,12 +13,13 @@ import java.lang.reflect.Method;
  */
 public class HumanAnnotationTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         Student student = new Student();
-        Method[] fields = Student.class.getDeclaredMethods();
-        for (Method field : fields) {
-            if (field.isAnnotationPresent(Human.class)) {
-                Human humanAnnotation = field.getAnnotation(Human.class);
+        Method[] methods = Student.class.getDeclaredMethods();
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(Human.class)) {
+                Human humanAnnotation = method.getAnnotation(Human.class);
                 student.setStudentName(humanAnnotation.studentName());
                 student.setStudentNo(humanAnnotation.studentNo());
                 student.setStudentAge(humanAnnotation.studentAge());

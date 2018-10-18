@@ -18,28 +18,21 @@ public class AnnotationTest {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @FooBar(createTime = "2017-02-08",description = "哈哈哈哈")
-    public String formatDate(Date date, String formatPattern) {
+    @FooBar(createTime = "2017-02-08", description = "哈哈哈哈")
+    private String formatDate(Date date, String formatPattern) {
         return new SimpleDateFormat(formatPattern).format(date);
     }
 
     @Test
     public void test() throws NoSuchMethodException {
-        Date now = new Date();//获取当前日期
+        Date now = new Date();
         logger.debug(formatDate(now, "yyyy-MM-dd HH:mm:ss"));
-
         Class<AnnotationTest> annotationTestClass = AnnotationTest.class;
-        Annotation[] annotations = annotationTestClass.getAnnotations();
-        for (Annotation annotation : annotations) {
-            logger.debug("annotation:{}", annotation);
-            logger.debug("type:{}", annotation.annotationType());
-        }
-        Method method = annotationTestClass.getMethod("formatDate", Date.class, String.class);
+        Method method = annotationTestClass.getDeclaredMethod("formatDate", Date.class, String.class);
         FooBar fooBarAnnotation = method.getAnnotation(FooBar.class);
         Annotation annotation = annotationTestClass.getAnnotation(FooBar.class);
         logger.debug("annotation:{}", annotation);
         logger.debug("type:{}", annotation.annotationType());
-
         logger.debug("方法描述：" + fooBarAnnotation.description());
         logger.debug("创建日期：" + fooBarAnnotation.createTime());
         logger.debug(fooBarAnnotation.annotationType().toString());

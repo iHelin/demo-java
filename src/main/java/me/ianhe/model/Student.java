@@ -1,5 +1,6 @@
 package me.ianhe.model;
 
+import com.google.common.base.MoreObjects;
 import me.ianhe.annotation.Human;
 
 import java.io.IOException;
@@ -60,7 +61,11 @@ public class Student implements Serializable {
     @Override
     @Human(studentAge = 10)
     public String toString() {
-        return "Student [studentNo=" + studentNo + ", studentName=" + studentName + ", studentAge=" + studentAge + "]";
+        return MoreObjects.toStringHelper(this)
+                .add("studentNo", studentNo)
+                .add("studentName", studentName)
+                .add("studentAge", studentAge)
+                .toString();
     }
 
     private void writeObject(ObjectOutputStream s)

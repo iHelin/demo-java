@@ -13,7 +13,9 @@ public class MyMethodInterceptor implements MethodInterceptor {
 
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
-        System.out.println("before...");
-        return methodProxy.invokeSuper(obj, args);
+        System.out.println("Before...");
+        Object res = methodProxy.invokeSuper(obj, args);
+        System.out.println("After...");
+        return res;
     }
 }

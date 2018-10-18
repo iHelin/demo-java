@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Created by iHelin on 17/2/8.
  */
-@Target({ElementType.METHOD,ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FooBar {
 
