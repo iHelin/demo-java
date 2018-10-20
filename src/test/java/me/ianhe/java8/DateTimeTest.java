@@ -2,7 +2,6 @@ package me.ianhe.java8;
 
 import org.junit.Test;
 
-import java.io.IOException;
 import java.time.*;
 
 /**
@@ -12,13 +11,7 @@ import java.time.*;
 public class DateTimeTest {
 
     @Test
-    public void test() throws IOException {
-        System.out.println("1.0 / 0 :" + 1.0 / 0);//Double.POSITIVE_INFINITY
-        System.out.println("0.0 / 0 :" + 0.0 / 0);//Double.NaN
-        System.out.println(Double.POSITIVE_INFINITY);
-        System.out.println(Double.NEGATIVE_INFINITY);
-        System.out.println(Double.NaN);
-        System.out.println(1_224_134);
+    public void test() {
         System.out.println("MonthDay.now() :" + MonthDay.now());
         System.out.println("Instant.now() :" + Instant.now());
         System.out.println("Year.now() :" + Year.now());

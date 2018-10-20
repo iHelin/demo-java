@@ -24,7 +24,7 @@ import java.util.function.Supplier;
  * @author linhe2
  * @since 2018/7/28 19:03
  */
-public class TestLambda {
+public class LambdaTest {
 
     /**
      * 无参数，无返回值
