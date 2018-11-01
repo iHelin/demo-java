@@ -1,4 +1,4 @@
-package me.ianhe.core;
+package me.ianhe.corejava;
 
 import java.math.BigDecimal;
 

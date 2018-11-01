@@ -56,7 +56,7 @@ public class LambdaTest {
     }
 
     /**
-     * 个参数，有返回值，方法体中多条语句
+     * 2个参数，有返回值，方法体中多条语句
      */
     @Test
     public void test4() {

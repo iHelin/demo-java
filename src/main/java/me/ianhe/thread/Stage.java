@@ -57,6 +57,7 @@ public class Stage extends Thread {
 
         mrCheng.start();
         try {
+            //等待指定的线程终止
             mrCheng.join();
         } catch (InterruptedException e) {
             e.printStackTrace();

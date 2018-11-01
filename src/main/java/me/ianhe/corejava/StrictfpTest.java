@@ -1,4 +1,4 @@
-package me.ianhe.core;
+package me.ianhe.corejava;
 
 /**
  * 使用strictfp关键字精确计算
