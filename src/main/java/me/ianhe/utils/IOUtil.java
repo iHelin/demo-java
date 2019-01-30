@@ -61,10 +61,10 @@ public class IOUtil {
         // 从in中批量读取字节，放入到buf这个字节数组中，从第0个位置开始放，最多放buf.length个，返回的是读到的字节的个数
         /*
          * int bytes = in.read(buf, 0, buf.length);// 一次性读完，说明字节数组足够大 int j = 1;
-		 * for (int i = 0; i < bytes; i++) { if (buf[i] <= 0xf) {
-		 * System.out.print('0'); } System.out.print(Integer.toHexString(buf[i])
-		 * + " "); if (j++ % 10 == 0) System.out.println(); }
-		 */
+         * for (int i = 0; i < bytes; i++) { if (buf[i] <= 0xf) {
+         * System.out.print('0'); } System.out.print(Integer.toHexString(buf[i])
+         * + " "); if (j++ % 10 == 0) System.out.println(); }
+         */
         int bytes;
         int j = 1;
         while ((bytes = in.read(buf, 0, buf.length)) != -1) {
@@ -112,24 +112,24 @@ public class IOUtil {
      * @param destFile
      * @throws IOException
      */
-    public static void copyFile(File srcFile, File destFile) throws IOException {
-        if (!srcFile.exists()) {
-            throw new IllegalArgumentException("文件：" + srcFile + "不存在");
-        }
-        if (!srcFile.isFile()) {
-            throw new IllegalArgumentException(srcFile + "不是文件");
-        }
-        FileInputStream in = new FileInputStream(srcFile);
-        FileOutputStream out = new FileOutputStream(destFile);
-        byte[] buf = new byte[8 * 1024];
-        int numberRead;
-        while ((numberRead = in.read(buf, 0, buf.length)) != -1) {
-            out.write(buf, 0, numberRead);
-            out.flush();// 最好加上
-        }
-        in.close();
-        out.close();
-    }
+//    public static void copyFile(File srcFile, File destFile) throws IOException {
+//        if (!srcFile.exists()) {
+//            throw new IllegalArgumentException("文件：" + srcFile + "不存在");
+//        }
+//        if (!srcFile.isFile()) {
+//            throw new IllegalArgumentException(srcFile + "不是文件");
+//        }
+//        FileInputStream in = new FileInputStream(srcFile);
+//        FileOutputStream out = new FileOutputStream(destFile);
+//        byte[] buf = new byte[8 * 1024];
+//        int numberRead;
+//        while ((numberRead = in.read(buf, 0, buf.length)) != -1) {
+//            out.write(buf, 0, numberRead);
+//            out.flush();// 最好加上
+//        }
+//        in.close();
+//        out.close();
+//    }
 
     /**
      * 进行文件的拷贝，利用带缓冲的字节流

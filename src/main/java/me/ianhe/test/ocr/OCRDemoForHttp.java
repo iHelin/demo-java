@@ -1,4 +1,4 @@
-package me.ianhe.ocr;
+package me.ianhe.test.ocr;
 
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.apache.http.HttpEntity;

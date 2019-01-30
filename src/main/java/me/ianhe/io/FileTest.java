@@ -1,7 +1,5 @@
 package me.ianhe.io;
 
-import org.junit.Test;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -15,17 +13,23 @@ import java.io.IOException;
  */
 public class FileTest {
 
+    public static void main(String[] args) {
+        fileFolderTest();
+        fileTest();
+    }
+
     /**
      * 文件夹测试
      *
      * @author iHelin
      * @since 2017/8/11 16:52
      */
-    @Test
-    public void fileFolderTest() {
+    private static void fileFolderTest() {
         File fileFolder = new File("demo/test");
-        if (!fileFolder.exists())
-            fileFolder.mkdirs();
+        if (!fileFolder.exists()) {
+            boolean result = fileFolder.mkdirs();
+            System.out.println("文件夹是否创建成功：" + result);
+        }
         //是否是一个目录 是目录返回true，不是目录或目录不存在返回false
         System.out.println("fileFolder是部目录吗？" + fileFolder.isDirectory());
         //是否是一个文件
@@ -45,15 +49,14 @@ public class FileTest {
      * @author iHelin
      * @since 2018/2/9 14:30
      */
-    @Test
-    public void fileTest() {
+    private static void fileTest() {
         File fileFolder = new File("demo/test");
         File file = new File(fileFolder, "testFile.txt");
         if (!file.exists()) {
             try {
                 //当且仅当不存在具有此抽象路径名指定名称的文件时，不可分地创建一个新的空文件。
-                boolean res = file.createNewFile();
-                System.out.println("文件是否创建成功：" + res);
+                boolean result = file.createNewFile();
+                System.out.println("文件是否创建成功：" + result);
             } catch (IOException e) {
                 e.printStackTrace();
             }

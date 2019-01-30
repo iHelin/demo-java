@@ -6,7 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.PushbackInputStream;
 
 /**
- * PushBackInputStream类继承了FilterInputStream类是InputStream类的修饰者。
+ * PushBackInputStream类继承了FilterInputStream类，是InputStream类的修饰者。
  * 提供可以将数据插入到输入流前端的能力(当然也可以做其他操作)。
  * 简而言之PushbackInputStream类的作用就是能够在读取缓冲区的时候提前知道下一个字节是什么，
  * 其实质是读取到下一个字符后回退的做法，这之间可以进行很多操作，

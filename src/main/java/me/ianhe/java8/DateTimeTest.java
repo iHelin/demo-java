@@ -1,7 +1,5 @@
 package me.ianhe.java8;
 
-import org.junit.Test;
-
 import java.time.*;
 
 /**
@@ -10,8 +8,7 @@ import java.time.*;
  */
 public class DateTimeTest {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         System.out.println("MonthDay.now() :" + MonthDay.now());
         System.out.println("Instant.now() :" + Instant.now());
         System.out.println("Year.now() :" + Year.now());

@@ -1,8 +1,8 @@
 package me.ianhe.io;
 
-import org.junit.Test;
-
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * DataInputStream
@@ -13,14 +13,9 @@ import java.io.*;
  * @author iHelin
  * @since 2017/8/3 14:53
  */
-public class DataInputStreamAndDataOutputStreamTest {
+public class DataInputStreamTest {
 
-    /**
-     * @author iHelin
-     * @since 2017/11/29 14:39
-     */
-    @Test
-    public void testDataInputStream() {
+    public static void main(String[] args) {
         try {
             DataInputStream dataInputStream = new DataInputStream(
                     new FileInputStream("demo/data.txt"));
@@ -40,40 +35,32 @@ public class DataInputStreamAndDataOutputStreamTest {
     }
 
     /**
-     * @author iHelin
-     * @since 2017/11/29 14:33
+     * 打印byte对应的16进制的字符串
+     *
+     * @param val
+     * @return
      */
-    @Test
-    public void testDataOutputStream() {
-        try {
-            DataOutputStream dataOutputStream = new DataOutputStream(
-                    new FileOutputStream("demo/data.txt"));
-            dataOutputStream.writeBoolean(true);
-            dataOutputStream.writeByte((byte) 0x41);
-            dataOutputStream.writeChar((char) 0x4243);
-            dataOutputStream.writeShort((short) 0x4445);
-            dataOutputStream.writeInt(0x12345678);
-            dataOutputStream.writeLong(0x0FEDCBA987654321L);
-            dataOutputStream.writeUTF("abcdefghijklmnopqrstuvwxyz何12");
-            dataOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // 打印byte对应的16进制的字符串
-    private String byteToHexString(byte val) {
+    private static String byteToHexString(byte val) {
         return Integer.toHexString(val & 0xff);
     }
 
-    // 打印char对应的16进制的字符串
-    private String charToHexString(char val) {
+    /**
+     * 打印char对应的16进制的字符串
+     *
+     * @param val
+     * @return
+     */
+    private static String charToHexString(char val) {
         return Integer.toHexString(val);
     }
 
-    // 打印short对应的16进制的字符串
-    private String shortToHexString(short val) {
+    /**
+     * 打印short对应的16进制的字符串
+     *
+     * @param val
+     * @return
+     */
+    private static String shortToHexString(short val) {
         return Integer.toHexString(val & 0xffff);
     }
-
 }

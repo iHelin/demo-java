@@ -1,8 +1,5 @@
 package me.ianhe.annotation;
 
-import me.ianhe.model.Student;
-import org.junit.Test;
-
 import java.lang.reflect.Method;
 
 /**
@@ -11,10 +8,9 @@ import java.lang.reflect.Method;
  * @author iHelin
  * @since 2018/4/27 11:47
  */
-public class HumanAnnotationTest {
+public class AnnotationTest {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         Student student = new Student();
         Method[] methods = Student.class.getDeclaredMethods();
         for (Method method : methods) {

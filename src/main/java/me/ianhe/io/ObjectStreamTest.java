@@ -1,12 +1,8 @@
 package me.ianhe.io;
 
-import me.ianhe.model.Student;
-import org.junit.Test;
+import me.ianhe.annotation.Student;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 /**
  * @author iHelin
@@ -18,8 +14,7 @@ public class ObjectStreamTest {
      * @author iHelin
      * @since 2017/11/29 14:49
      */
-    @Test
-    public void testObjectStream() throws Exception {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         String file = "demo/objectStream.txt";
         //1.对象序列化
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));

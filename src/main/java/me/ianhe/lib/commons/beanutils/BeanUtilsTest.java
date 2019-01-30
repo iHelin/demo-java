@@ -1,8 +1,7 @@
-package me.ianhe.commons.beanutils;
+package me.ianhe.lib.commons.beanutils;
 
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -15,12 +14,11 @@ import java.util.Date;
  */
 public class BeanUtilsTest {
 
-    @Test
-    public void test() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException, InstantiationException, NoSuchFieldException {
+    public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException, NoSuchFieldException {
         System.out.println(BeanUtils.describe(new Date()));
-        Class cla = Class.forName("org.apache.commons.io.Java7Support");
-        Method method = cla.getDeclaredMethod("isAtLeastJava7");
-        Field field = cla.getDeclaredField("IS_JAVA7");
+        Class clazz = Class.forName("org.apache.commons.io.Java7Support");
+        Method method = clazz.getDeclaredMethod("isAtLeastJava7");
+        Field field = clazz.getDeclaredField("IS_JAVA7");
         field.setAccessible(true);
         method.setAccessible(true);
         System.out.println(field.getBoolean(null));

@@ -1,9 +1,8 @@
 package me.ianhe.io;
 
-import org.junit.Test;
-
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * @author iHelin
@@ -15,14 +14,14 @@ public class FileReaderAndFileWriterTest {
      * @author iHelin
      * @since 2017/11/29 14:49
      */
-    @Test
-    public void test() throws Exception {
+    public static void main(String[] args) throws IOException {
         FileReader fileReader = new FileReader("demo/read.txt");
         FileWriter fileWriter = new FileWriter("demo/fileWriter.txt");
-        char[] buffer = new char[2056];
-        int c;
-        while ((c = fileReader.read(buffer, 0, buffer.length)) != -1) {
-            fileWriter.write(buffer, 0, c);
+        //一次循环读2K大小
+        char[] buffer = new char[2048];
+        int numberRead;
+        while ((numberRead = fileReader.read(buffer)) != -1) {
+            fileWriter.write(buffer, 0, numberRead);
             fileWriter.flush();
         }
         fileWriter.close();

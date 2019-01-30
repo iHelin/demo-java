@@ -1,9 +1,7 @@
-package me.ianhe.commons.lang3;
+package me.ianhe.lib.commons.lang3;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.text.WordUtils;
-import org.junit.Test;
 
 /**
  * @author iHelin
@@ -17,8 +15,7 @@ public class StringUtilTest {
      * @author iHelin
      * @since 2017/5/12 14:37
      */
-    @Test
-    public void stringUtilTest() {
+    public static void stringUtilTest() {
         //首字母大写
         System.out.println(StringUtils.capitalize("string"));
         //是否为数字
@@ -37,25 +34,8 @@ public class StringUtilTest {
         System.out.println(RandomStringUtils.random(4, false, true));
     }
 
-    /**
-     * WordUtils测试
-     *
-     * @author iHelin
-     * @since 2017-05-10 16:50
-     */
-    @Test
-    public void randomTest() {
-        //首字母大写
-        System.out.println(WordUtils.capitalize("i am FINE"));//I Am FINE
-        //首字母大写，并把其余的改为小写
-        System.out.println(WordUtils.capitalizeFully("i am FINE"));//I Am Fine
-        //取首字母
-        System.out.println(WordUtils.initials("Ben John lee"));//BJL
-        //取反操作:大写小写转换
-        System.out.println(WordUtils.swapCase("The dog has a BONE"));//tHE DOG HAS A bone
-        //首字母小写
-        System.out.println(WordUtils.uncapitalize("I Am FInE"));//i am fInE
-        //加换行符
-        System.out.println(WordUtils.wrap("1234dwd",2));
+    public static void main(String[] args) {
+        stringUtilTest();
     }
+
 }

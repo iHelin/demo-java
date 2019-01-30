@@ -1,10 +1,10 @@
 package me.ianhe.io;
 
-import org.apache.commons.lang3.CharEncoding;
 import org.junit.Test;
 
 import java.io.*;
 import java.nio.CharBuffer;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 字符流测试
@@ -28,7 +28,7 @@ public class ReaderAndWriterTest {
     @Test
     public void testOutputStreamWriter() throws Exception {
         FileOutputStream fileOutputStream = new FileOutputStream("demo/outputStreamWriter.txt");
-        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, CharEncoding.UTF_8);
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
         try {
             outputStreamWriter.write("这是要保存的中文字符");
         } finally {
@@ -46,7 +46,7 @@ public class ReaderAndWriterTest {
     public void testInputStreamReader() throws Exception {
         //读取字节转换成字符
         FileInputStream fileInputStream = new FileInputStream("demo/inputStreamReader.txt");
-        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, CharEncoding.UTF_8);
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
         StringBuffer stringBuffer = new StringBuffer();
         char[] chars = new char[64];
         int count;

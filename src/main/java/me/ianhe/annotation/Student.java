@@ -1,7 +1,6 @@
-package me.ianhe.model;
+package me.ianhe.annotation;
 
 import com.google.common.base.MoreObjects;
-import me.ianhe.annotation.Human;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
