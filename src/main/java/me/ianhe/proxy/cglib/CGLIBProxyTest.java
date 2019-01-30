@@ -1,6 +1,5 @@
 package me.ianhe.proxy.cglib;
 
-import org.junit.Test;
 import org.springframework.cglib.proxy.Enhancer;
 
 /**
@@ -12,12 +11,11 @@ import org.springframework.cglib.proxy.Enhancer;
  */
 public class CGLIBProxyTest {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(HelloConcrete.class);
         enhancer.setCallback(new MyMethodInterceptor());
         HelloConcrete hello = (HelloConcrete) enhancer.create();
-        System.out.println(hello.sayHello("Nice to meet you!"));
+        hello.sayHello("Nice to meet you!");
     }
 }

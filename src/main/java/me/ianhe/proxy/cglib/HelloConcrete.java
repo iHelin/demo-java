@@ -6,7 +6,7 @@ package me.ianhe.proxy.cglib;
  */
 public class HelloConcrete {
 
-    public String sayHello(String str) {
-        return "HelloConcrete: " + str;
+    public void sayHello(String str) {
+        System.out.println("HelloConcrete: " + str);
     }
 }

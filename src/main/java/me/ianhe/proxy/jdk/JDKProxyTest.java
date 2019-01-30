@@ -1,7 +1,5 @@
 package me.ianhe.proxy.jdk;
 
-import org.junit.Test;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -15,14 +13,18 @@ import java.lang.reflect.Proxy;
  */
 public class JDKProxyTest {
 
+    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+//        test();
+        test2();
+    }
+
     /**
      * Proxy.getProxyClass
      *
      * @author iHelin
      * @since 2018/2/9 13:56
      */
-    @Test
-    public void test() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
+    public static void test() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException,
             InstantiationException {
         final Speaker speakerOrigin = new SpeakerImpl();
         Class<?> proxyClass = Proxy.getProxyClass(speakerOrigin.getClass().getClassLoader(), speakerOrigin.getClass().getInterfaces());
@@ -34,12 +36,12 @@ public class JDKProxyTest {
 
     /**
      * Proxy.newProxyInstance
+     * 这种比较常见
      *
      * @author iHelin
      * @since 2018/2/9 13:56
      */
-    @Test
-    public void test2() {
+    public static void test2() {
         final Speaker speakerOri = new SpeakerImpl();
         final InvocationHandler invocationHandler = new SpeakerInvocationHandler(speakerOri);
         Speaker speaker = (Speaker) Proxy.newProxyInstance(Speaker.class.getClassLoader(),
