@@ -8,16 +8,16 @@ import java.lang.reflect.Proxy;
  * @author iHelin
  * @date 2019-01-30 10:45
  */
-public class DynaProxyHello implements InvocationHandler {
+public class DynaProxyHello<K, T> implements InvocationHandler {
 
-    private Object target;
+    private K target;
 
-    private Object proxy;
+    private T proxy;
 
-    public Object bind(Object target, Object proxy) {
+    public K bind(K target, T proxy) {
         this.target = target;
         this.proxy = proxy;
-        return Proxy.newProxyInstance(this.target.getClass().getClassLoader(), this.target.getClass().getInterfaces(), this);
+        return (K) Proxy.newProxyInstance(this.target.getClass().getClassLoader(), this.target.getClass().getInterfaces(), this);
     }
 
     @Override
