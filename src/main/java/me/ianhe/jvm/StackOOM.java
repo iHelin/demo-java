@@ -2,8 +2,7 @@ package me.ianhe.jvm;
 
 /**
  * java虚拟机栈及本地方法栈
- * 添加jvm参数
- * -Xss160k
+ * vm options:-Xss160k
  *
  * @author iHelin
  * @since 2018/3/9 16:54
