@@ -1,4 +1,4 @@
-package me.ianhe.proxy.jdk;
+package me.ianhe.reflect.proxy.jdk;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;

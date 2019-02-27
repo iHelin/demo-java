@@ -13,7 +13,7 @@ public class AZTest {
         System.out.println(getKey(scanner.nextInt()));
     }
 
-    public static String getKey(int index) {
+    private static String getKey(int index) {
         String colCode = "";
         char key = 'A';
         int loop = index / 26;

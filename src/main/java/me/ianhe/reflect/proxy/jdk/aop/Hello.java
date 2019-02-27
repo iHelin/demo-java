@@ -1,4 +1,4 @@
-package me.ianhe.proxy.jdk.aop;
+package me.ianhe.reflect.proxy.jdk.aop;
 
 /**
  * @author iHelin

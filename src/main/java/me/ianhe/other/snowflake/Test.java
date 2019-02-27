@@ -1,4 +1,4 @@
-package me.ianhe.snowflake;
+package me.ianhe.other.snowflake;
 
 import com.relops.snowflake.Snowflake;
 

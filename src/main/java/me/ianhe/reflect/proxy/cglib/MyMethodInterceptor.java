@@ -1,4 +1,4 @@
-package me.ianhe.proxy.cglib;
+package me.ianhe.reflect.proxy.cglib;
 
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;

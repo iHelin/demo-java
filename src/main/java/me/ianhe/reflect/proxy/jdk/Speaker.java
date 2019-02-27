@@ -1,4 +1,4 @@
-package me.ianhe.proxy.jdk;
+package me.ianhe.reflect.proxy.jdk;
 
 /**
  * 代理对象接口

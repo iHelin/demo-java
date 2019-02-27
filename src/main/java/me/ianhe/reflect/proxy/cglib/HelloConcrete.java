@@ -1,4 +1,4 @@
-package me.ianhe.proxy.cglib;
+package me.ianhe.reflect.proxy.cglib;
 
 /**
  * @author iHelin
