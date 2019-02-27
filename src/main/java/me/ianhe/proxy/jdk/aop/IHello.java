@@ -6,5 +6,10 @@ package me.ianhe.proxy.jdk.aop;
  */
 public interface IHello {
 
+    /**
+     * sayHello
+     *
+     * @param str
+     */
     void sayHello(String str);
 }

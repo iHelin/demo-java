@@ -11,7 +11,7 @@ import java.util.Stack;
 public class StackTest {
 
     public static void main(String[] args) {
-        Stack<String> s = new Stack<String>();
+        Stack<String> s = new Stack<>();
         s.push("123");
         s.push("234");
         s.push("345");

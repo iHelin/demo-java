@@ -1,6 +1,6 @@
 package me.ianhe.io;
 
-import me.ianhe.test.IOSupport;
+import me.ianhe.utils.IOSupport;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

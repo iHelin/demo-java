@@ -23,6 +23,8 @@ public class StringJoinerTest {
         System.out.println(sj1.toString());
 
         ImmutableList<String> objects = ImmutableList.of("Hollis", "hollischuang", "Java干货");
+//        List<String> objects = Arrays.asList("Hollis", "hollischuang", "Java干货");
+
 
         String s = String.join(":", objects);
         System.out.println(s);

@@ -4,7 +4,7 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import static me.ianhe.test.IOSupport.*;
+import static me.ianhe.utils.IOSupport.*;
 
 /**
  * DataInputStream

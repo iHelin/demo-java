@@ -23,8 +23,69 @@ import java.io.*;
  * BufferedOutputStream--->write方法更方便，相当于一瓢一瓢先放入桶中，然后从桶中倒入到另一个缸中
  *
  * @author iHelin
+ * @date 2019-02-27 11:20
  */
-public class IOUtil {
+public class IOSupport {
+
+    /**
+     * 对应英文字母“abcddefghijklmnopqrsttuvwxyz”
+     */
+    public static final byte[] ARRAY_LETTERS = {
+            0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6A, 0x6B, 0x6C, 0x6D,
+            0x6E, 0x6F, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A};
+
+    /**
+     * 打印byte对应的16进制的字符串
+     *
+     * @param val
+     * @return
+     */
+    public static String byteToHexString(byte val) {
+        return Integer.toHexString(val & 0xff);
+    }
+
+    /**
+     * 打印char对应的16进制的字符串
+     *
+     * @param val
+     * @return
+     */
+    public static String charToHexString(char val) {
+        return Integer.toHexString(val);
+    }
+
+    /**
+     * 打印short对应的16进制的字符串
+     *
+     * @param val
+     * @return
+     */
+    public static String shortToHexString(short val) {
+        return Integer.toHexString(val & 0xffff);
+    }
+
+    public static BufferedReader getBufferedReader() {
+        FileInputStream fileInputStream = null;
+        try {
+            fileInputStream = new FileInputStream("demo/read.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+        return new BufferedReader(inputStreamReader);
+    }
+
+    public static BufferedWriter getBufferedWriter() {
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream("demo/outputStreamWriter.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
+        return new BufferedWriter(outputStreamWriter);
+    }
+
     /**
      * 读取指定文件的内容，按照16进制输出到控制台 并且每输出10个byte换行 单字节读取不适合大文件，读大文件效率低
      *
@@ -73,8 +134,9 @@ public class IOUtil {
                     System.out.print('0');
                 }
                 System.out.print(Integer.toHexString(buf[i] & 0xff) + " ");
-                if (j++ % 10 == 0)
+                if (j++ % 10 == 0) {
                     System.out.println();
+                }
             }
         }
         in.close();
@@ -112,24 +174,24 @@ public class IOUtil {
      * @param destFile
      * @throws IOException
      */
-//    public static void copyFile(File srcFile, File destFile) throws IOException {
-//        if (!srcFile.exists()) {
-//            throw new IllegalArgumentException("文件：" + srcFile + "不存在");
-//        }
-//        if (!srcFile.isFile()) {
-//            throw new IllegalArgumentException(srcFile + "不是文件");
-//        }
-//        FileInputStream in = new FileInputStream(srcFile);
-//        FileOutputStream out = new FileOutputStream(destFile);
-//        byte[] buf = new byte[8 * 1024];
-//        int numberRead;
-//        while ((numberRead = in.read(buf, 0, buf.length)) != -1) {
-//            out.write(buf, 0, numberRead);
-//            out.flush();// 最好加上
-//        }
-//        in.close();
-//        out.close();
-//    }
+    public static void copyFile(File srcFile, File destFile) throws IOException {
+        if (!srcFile.exists()) {
+            throw new IllegalArgumentException("文件：" + srcFile + "不存在");
+        }
+        if (!srcFile.isFile()) {
+            throw new IllegalArgumentException(srcFile + "不是文件");
+        }
+        FileInputStream in = new FileInputStream(srcFile);
+        FileOutputStream out = new FileOutputStream(destFile);
+        byte[] buf = new byte[8 * 1024];
+        int numberRead;
+        while ((numberRead = in.read(buf, 0, buf.length)) != -1) {
+            out.write(buf, 0, numberRead);
+            out.flush();// 最好加上
+        }
+        in.close();
+        out.close();
+    }
 
     /**
      * 进行文件的拷贝，利用带缓冲的字节流
@@ -156,4 +218,7 @@ public class IOUtil {
         bos.close();
     }
 
+    private IOSupport() {
+        throw new UnsupportedOperationException("工具类不允许实例化");
+    }
 }

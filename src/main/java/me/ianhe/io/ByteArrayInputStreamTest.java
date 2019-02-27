@@ -2,7 +2,7 @@ package me.ianhe.io;
 
 import java.io.ByteArrayInputStream;
 
-import static me.ianhe.test.IOSupport.ARRAY_LETTERS;
+import static me.ianhe.utils.IOSupport.ARRAY_LETTERS;
 
 /**
  * @author iHelin
