@@ -4,8 +4,8 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author iHelin
@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
  */
 public class TimeClientHandler extends ChannelHandlerAdapter {
 
-    private static final Logger logger = LoggerFactory.getLogger(TimeClientHandler.class.getName());
     private final ByteBuf firstMessage;
 
     /**
@@ -35,14 +34,14 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
         ByteBuf buf = (ByteBuf) msg;
         byte[] req = new byte[buf.readableBytes()];
         buf.readBytes(req);
-        String body = new String(req, "UTF-8");
+        String body = new String(req, StandardCharsets.UTF_8);
         System.out.println("Now is : " + body);
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         // 释放资源
-        logger.warn("Unexpected exception from downstream : " + cause.getMessage());
+        cause.printStackTrace();
         ctx.close();
     }
 }

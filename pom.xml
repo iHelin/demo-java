@@ -23,23 +23,18 @@
 
     <dependencies>
 
+        <!--雪花算法-->
         <dependency>
             <groupId>com.relops</groupId>
             <artifactId>snowflake</artifactId>
             <version>1.1</version>
         </dependency>
 
+        <!--java邮件-->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.6.1</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>4.5.2</version>
         </dependency>
 
         <dependency>
@@ -48,7 +43,7 @@
             <version>5.0.0.Alpha1</version>
         </dependency>
 
-
+        <!--guava-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -77,6 +72,7 @@
             <version>1.4</version>
         </dependency>
         <!--apache common end-->
+
         <!-- spring support -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -99,18 +95,7 @@
             <artifactId>spring-aspects</artifactId>
         </dependency>
         <!-- spring support end-->
-        <!-- logback -->
-        <dependency>
-            <groupId>org.logback-extensions</groupId>
-            <artifactId>logback-ext-spring</artifactId>
-            <version>0.1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.20</version>
-        </dependency>
-        <!-- logback end-->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -142,6 +127,7 @@
             <version>4.5.6</version>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>hello</finalName>
         <plugins>

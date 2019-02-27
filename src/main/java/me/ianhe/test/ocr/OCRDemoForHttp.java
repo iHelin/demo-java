@@ -9,8 +9,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,8 +27,6 @@ import java.util.Map;
  * @date 2018-12-04 15:33
  */
 public class OCRDemoForHttp {
-
-    static Logger logger = LoggerFactory.getLogger(OCRDemoForHttp.class);
 
     public static void main(String[] args) throws Exception {
         Map<String, String> map = new HashMap<>();
@@ -84,7 +80,7 @@ public class OCRDemoForHttp {
                     httpResponse.close();
                 }
             } catch (IOException e) {
-                logger.info("## release resouce error ##" + e);
+                e.printStackTrace();
             }
         }
         return result;
