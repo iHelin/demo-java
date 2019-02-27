@@ -1,7 +1,5 @@
 package me.ianhe.io;
 
-import org.junit.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.PushbackInputStream;
 
@@ -18,9 +16,8 @@ import java.io.PushbackInputStream;
  */
 public class PushBackInputStreamTest {
 
-    @Test
-    public void test() throws Exception {
-        String str = "hello,iHelin";
+    public static void main(String[] args) throws Exception {
+        String str = "hello,world";
         // 创建字节数组流对象
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(str.getBytes());
         // 创建回退流对象，将拆解的字节数组流传入
@@ -42,4 +39,5 @@ public class PushBackInputStreamTest {
             }
         }
     }
+
 }

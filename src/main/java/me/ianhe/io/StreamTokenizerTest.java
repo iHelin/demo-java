@@ -1,10 +1,7 @@
 package me.ianhe.io;
 
-import org.junit.Test;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.StreamTokenizer;
 
 /**
@@ -19,17 +16,12 @@ public class StreamTokenizerTest {
      * @author iHelin
      * @since 2017/8/12 11:35
      */
-    @Test
-    public void test() throws Exception {
-        String fileName = "demo/demo.txt";
+    public static void main(String[] args) {
+        String fileName = "demo/fileWriter.txt";
 
-        FileReader fileReader = null;
-        try {
-            fileReader = new FileReader(fileName);
+        try (FileReader fileReader = new FileReader(fileName)) {
             //创建分析给定字符流的标记生成器
-            StreamTokenizer st = new StreamTokenizer(new BufferedReader(
-                    fileReader));
-
+            StreamTokenizer st = new StreamTokenizer(new BufferedReader(fileReader));
             //ordinaryChar方法指定字符参数在此标记生成器中是“普通”字符。
             //下面指定单引号、双引号和注释符号是普通字符
             st.ordinaryChar('\'');
@@ -77,13 +69,6 @@ public class StreamTokenizerTest {
             System.out.println("Total = " + total);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (fileReader != null) {
-                try {
-                    fileReader.close();
-                } catch (IOException e1) {
-                }
-            }
         }
     }
 }

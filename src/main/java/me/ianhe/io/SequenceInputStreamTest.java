@@ -1,7 +1,5 @@
 package me.ianhe.io;
 
-import org.junit.Test;
-
 import java.io.*;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -18,8 +16,7 @@ import java.util.Vector;
  */
 public class SequenceInputStreamTest {
 
-    @Test
-    public void doSequence() {
+    public static void main(String[] args) {
         // 创建一个合并流的对象
         SequenceInputStream sequenceInputStream = null;
         // 创建输出流。

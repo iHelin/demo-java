@@ -1,7 +1,5 @@
 package me.ianhe.io;
 
-import org.junit.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -27,16 +25,12 @@ import java.util.Arrays;
  */
 public class RandomAccessFileTest {
 
-    /**
-     * @author iHelin
-     * @since 2017/11/29 14:53
-     */
-    @Test
-    public void test() throws IOException {
-        File demoFile = new File("demo");
-        if (!demoFile.exists())
-            demoFile.mkdir();
-        File file = new File(demoFile, "randomAccessFile.txt");
+    public static void main(String[] args) throws IOException {
+        File fileDir = new File("demo");
+        if (!fileDir.exists()) {
+            fileDir.mkdir();
+        }
+        File file = new File(fileDir, "randomAccessFile.txt");
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -51,17 +45,17 @@ public class RandomAccessFileTest {
 
         int i = 0x7fffffff;
         //用	write方法每次只能写一个字节，如果要把i写进去就得写四次
-        randomAccessFile.write(i >>> 24);//高八位
+        randomAccessFile.write(i >>> 24);
         randomAccessFile.write(i >>> 16);
         randomAccessFile.write(i >>> 8);
         randomAccessFile.write(i);
         System.out.println(randomAccessFile.getFilePointer());
 
-        //可以直接写一个int
+        //也可以直接写一个int
         randomAccessFile.writeInt(i);
+        System.out.println(randomAccessFile.getFilePointer());
 
-        String s = "中";
-        byte[] gbk = s.getBytes("gbk");
+        byte[] gbk = "中".getBytes();
         randomAccessFile.write(gbk);
         System.out.println(randomAccessFile.getFilePointer());
 
