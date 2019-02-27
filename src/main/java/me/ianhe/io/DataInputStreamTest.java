@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import static me.ianhe.test.IOSupport.*;
+
 /**
  * DataInputStream
  * DataInputStream 是数据输入流。它继承于FilterInputStream。
@@ -17,8 +19,7 @@ public class DataInputStreamTest {
 
     public static void main(String[] args) {
         try {
-            DataInputStream dataInputStream = new DataInputStream(
-                    new FileInputStream("demo/data.txt"));
+            DataInputStream dataInputStream = new DataInputStream(new FileInputStream("demo/data.txt"));
             System.out.printf("byteToHexString(0x8F):0x%s\n", byteToHexString((byte) 0x8F));
             System.out.printf("charToHexString(0x8FCF):0x%s\n", charToHexString((char) 0x8FCF));
             System.out.printf("readBoolean():%s\n", dataInputStream.readBoolean());
@@ -34,33 +35,5 @@ public class DataInputStreamTest {
         }
     }
 
-    /**
-     * 打印byte对应的16进制的字符串
-     *
-     * @param val
-     * @return
-     */
-    private static String byteToHexString(byte val) {
-        return Integer.toHexString(val & 0xff);
-    }
 
-    /**
-     * 打印char对应的16进制的字符串
-     *
-     * @param val
-     * @return
-     */
-    private static String charToHexString(char val) {
-        return Integer.toHexString(val);
-    }
-
-    /**
-     * 打印short对应的16进制的字符串
-     *
-     * @param val
-     * @return
-     */
-    private static String shortToHexString(short val) {
-        return Integer.toHexString(val & 0xffff);
-    }
 }
