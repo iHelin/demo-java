@@ -1,5 +1,6 @@
 package me.ianhe.juc;
 
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
@@ -9,7 +10,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class SemaphoreTest {
     static class Parking {
-        //信号量
+
+        /**
+         * 信号量
+         */
         private Semaphore semaphore;
 
         Parking(int count) {
@@ -20,9 +24,8 @@ public class SemaphoreTest {
             try {
                 //获取信号量
                 semaphore.acquire();
-                long time = (long) (Math.random() * 10);
+                int time = new Random().nextInt(10);
                 System.out.println(Thread.currentThread().getName() + "进入停车场，停车" + time + "秒...");
-//                Thread.sleep(time);
                 TimeUnit.SECONDS.sleep(time);
                 System.out.println(Thread.currentThread().getName() + "开出停车场...");
             } catch (InterruptedException e) {

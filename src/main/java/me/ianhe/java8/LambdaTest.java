@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.Comparator;
+import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -53,6 +54,8 @@ public class LambdaTest {
     @Test
     public void test3() {
         Comparator<Integer> c = Comparator.comparingInt(x -> x);
+        int compare = c.compare(1, 2);
+        System.out.println(compare);
     }
 
     /**
@@ -64,23 +67,16 @@ public class LambdaTest {
             System.out.println("哈哈哈哈");
             return Integer.compare(x, y);
         };
+        int compare = c.compare(1, 2);
+        System.out.println(compare);
     }
 
     /**
-     * Consumer
-     */
-    @Test
-    public void test5() {
-        Consumer<Double> consumer = m -> System.out.println("消费：" + m + "元");
-        consumer.accept(1000.0);
-    }
-
-    /**
-     * Supplier
+     * Supplier:无参数，又返回值
      */
     @Test
     public void test6() {
-        Supplier<Integer> supplier = () -> (int) (Math.random() * 100);
+        Supplier<Integer> supplier = () -> new Random().nextInt(100);
         int length = 10;
         for (int i = 0; i < length; i++) {
             System.out.println(supplier.get());
@@ -88,7 +84,7 @@ public class LambdaTest {
     }
 
     /**
-     * Function
+     * Function：1参数，有返回值
      */
     @Test
     public void test7() {
@@ -97,7 +93,7 @@ public class LambdaTest {
     }
 
     /**
-     * Predicate
+     * Predicate:1参数，返回boolean类型
      */
     @Test
     public void test8() {
