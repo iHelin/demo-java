@@ -1,6 +1,5 @@
 package me.ianhe.xml;
 
-import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -13,19 +12,20 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 /**
+ * xml解析
+ *
  * @author iHelin
  * @since 2017/11/21 12:23
  */
 public class XmlTest {
 
-    @Test
-    public void test() {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    public static void main(String[] args) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         try {
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse("demo/books.xml");
-            NodeList bookList = doc.getElementsByTagName("book");
+            DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+            Document document = documentBuilder.parse("demo/books.xml");
+            NodeList bookList = document.getElementsByTagName("book");
             System.out.println("书本数量：" + bookList.getLength());
             System.out.println();
             for (int i = 0; i < bookList.getLength(); i++) {
@@ -33,26 +33,16 @@ public class XmlTest {
                 String attr = book.getAttribute("id");
                 System.out.println("-第" + attr + "本书");
                 NodeList childList = book.getChildNodes();
-                for (int k = 0; k < childList.getLength(); k++) {
-                    if (childList.item(k).getNodeType() == Node.ELEMENT_NODE) {
-                        System.out.print("---" + childList.item(k).getNodeName() + ":");
-                        //System.out.println(childList.item(k).getFirstChild().getNodeValue());
-                        System.out.println(childList.item(k).getTextContent());
+                for (int j = 0; j < childList.getLength(); j++) {
+                    if (childList.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                        System.out.print("---" + childList.item(j).getNodeName() + ":");
+                        System.out.println(childList.item(j).getTextContent());
                     }
 
                 }
-
-				/*NamedNodeMap attrs = book.getAttributes();
-                for(int j=0;j<attrs.getLength();j++){
-					Node attr = attrs.item(j);
-					System.out.print("属性名"+attr.getNodeName()+";");
-					System.out.println("属性值"+attr.getNodeValue());
-				}*/
             }
-        } catch (ParserConfigurationException e1) {
+        } catch (ParserConfigurationException | SAXException | IOException e1) {
             e1.printStackTrace();
-        } catch (SAXException | IOException e) {
-            e.printStackTrace();
         }
     }
 
