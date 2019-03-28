@@ -30,7 +30,11 @@ public class ForkJoinPoolTest {
         private static final long serialVersionUID = -259195479995561737L;
         private long start;
         private long end;
-        private static final long THRESHOLD = 10000L;  //临界值
+
+        /**
+         * 临界值
+         */
+        private static final long THRESHOLD = 10000L;
 
         public ForkJoinSumCalculate(long start, long end) {
             this.start = start;
@@ -70,7 +74,9 @@ public class ForkJoinPoolTest {
         System.out.println("耗费时间为：" + Duration.between(start, end).toMillis());
     }
 
-    //java8 新特性
+    /**
+     * java8 新特性
+     */
     @Test
     public void test2() {
         Instant start = Instant.now();
