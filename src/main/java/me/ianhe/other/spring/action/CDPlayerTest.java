@@ -1,4 +1,4 @@
-package me.ianhe.spring.action;
+package me.ianhe.other.spring.action;
 
 import org.junit.Assert;
 import org.junit.Test;

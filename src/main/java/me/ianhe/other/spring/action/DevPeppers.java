@@ -1,4 +1,4 @@
-package me.ianhe.spring.action;
+package me.ianhe.other.spring.action;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
  * @author iHelin
  * @since 2018/8/29 12:45
  */
-@Profile("sgt")
+@Profile("dev")
 @Component
-public class SgtPeppers implements CompactDisc, BeanNameAware, BeanFactoryAware, ApplicationContextAware {
+public class DevPeppers implements CompactDisc, BeanNameAware, BeanFactoryAware, ApplicationContextAware {
 
-    private String title = "Sgt.Perrer's Lonely Hearts Club Band";
+    private String title = "Dev";
 
     private String artist = "The Beatles";
 

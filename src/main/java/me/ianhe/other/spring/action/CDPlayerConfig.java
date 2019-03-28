@@ -1,4 +1,4 @@
-package me.ianhe.spring.action;
+package me.ianhe.other.spring.action;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

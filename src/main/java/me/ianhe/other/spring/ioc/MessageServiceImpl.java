@@ -1,4 +1,4 @@
-package me.ianhe.spring.ioc;
+package me.ianhe.other.spring.ioc;
 
 /**
  * @author iHelin
