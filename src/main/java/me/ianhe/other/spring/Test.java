@@ -1,6 +1,6 @@
 package me.ianhe.other.spring;
 
-import com.alibaba.druid.support.json.JSONUtils;
+import com.google.gson.Gson;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -21,7 +21,9 @@ public class Test {
         params.put("text", contentMap);
 
         RestTemplate restTemplate = new RestTemplate();
-        String s = restTemplate.postForObject(url, JSONUtils.toJSONString(params), String.class);
+
+        Gson gson = new Gson();
+        String s = restTemplate.postForObject(url, gson.toJson(params), String.class);
         System.out.println(s);
     }
 }

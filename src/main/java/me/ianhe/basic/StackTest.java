@@ -1,4 +1,4 @@
-package me.ianhe.test;
+package me.ianhe.basic;
 
 import java.util.Deque;
 import java.util.Stack;

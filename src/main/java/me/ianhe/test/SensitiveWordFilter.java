@@ -13,7 +13,10 @@ import java.util.Set;
  */
 public class SensitiveWordFilter {
 
-    public static final int MATCH_TYPE = 1;      //最小匹配规则
+    /**
+     * 最小匹配规则
+     */
+    public static final int MATCH_TYPE = 1;
 
     /**
      * 判断文字是否包含敏感字符
@@ -25,8 +28,10 @@ public class SensitiveWordFilter {
     public boolean containsSensitiveWord(String txt, int matchType) {
         boolean flag = false;
         for (int i = 0; i < txt.length(); i++) {
-            int matchFlag = this.getSensitiveWordLength(txt, i, matchType); //判断是否包含敏感字符
-            if (matchFlag > 0) {    //大于0存在，返回true
+            //判断是否包含敏感字符
+            int matchFlag = this.getSensitiveWordLength(txt, i, matchType);
+            if (matchFlag > 0) {
+                //大于0存在，返回true
                 flag = true;
             }
         }
@@ -43,10 +48,13 @@ public class SensitiveWordFilter {
     public Set<String> getSensitiveWord(String txt, int matchType) {
         Set<String> sensitiveWordSet = new HashSet<>();
         for (int i = 0; i < txt.length(); i++) {
-            int length = getSensitiveWordLength(txt, i, matchType);    //判断是否包含敏感字符
-            if (length > 0) {    //存在,加入list中
+            //判断是否包含敏感字符
+            int length = getSensitiveWordLength(txt, i, matchType);
+            if (length > 0) {
+                //存在,加入list中
                 sensitiveWordSet.add(txt.substring(i, i + length));
-                i = i + length - 1;    //减1的原因，是因为for会自增
+                //减1的原因，是因为for会自增
+                i = i + length - 1;
             }
         }
         return sensitiveWordSet;
@@ -62,7 +70,8 @@ public class SensitiveWordFilter {
      */
     public String replaceSensitiveWord(String txt, int matchType, String replaceChar) {
         String resultTxt = txt;
-        Set<String> set = getSensitiveWord(txt, matchType);     //获取所有的敏感词
+        //获取所有的敏感词
+        Set<String> set = getSensitiveWord(txt, matchType);
         Iterator<String> iterator = set.iterator();
         String word;
         String replaceString;

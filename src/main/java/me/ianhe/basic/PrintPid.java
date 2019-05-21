@@ -1,4 +1,4 @@
-package me.ianhe.test;
+package me.ianhe.basic;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;

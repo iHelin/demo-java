@@ -1,8 +1,10 @@
-package me.ianhe.test;
+package me.ianhe.basic;
 
 import java.util.Scanner;
 
 /**
+ * 输入数字，返回对应的英文
+ *
  * @author iHelin
  * @since 2018/3/12 22:54
  */

@@ -1,4 +1,4 @@
-package me.ianhe.test;
+package me.ianhe.book;
 
 import java.util.Random;
 
@@ -9,6 +9,7 @@ import java.util.Random;
  * @since 2017/11/20 16:48
  */
 public class TernaryOperator {
+
     public static void main(String[] args) {
         long i = 1L;
         /**

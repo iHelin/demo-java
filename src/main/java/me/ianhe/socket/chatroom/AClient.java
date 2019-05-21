@@ -1,4 +1,4 @@
-package me.ianhe.nio;
+package me.ianhe.socket.chatroom;
 
 import java.io.IOException;
 
@@ -6,9 +6,9 @@ import java.io.IOException;
  * @author iHelin
  * @date 2019-05-06 23:54
  */
-public class BClient {
+public class AClient {
 
     public static void main(String[] args) throws IOException {
-        new NioClient().start("BClient");
+        new NioClient().start("AClient");
     }
 }

@@ -1,4 +1,4 @@
-package me.ianhe.nio;
+package me.ianhe.socket.chatroom;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

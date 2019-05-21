@@ -1,6 +1,7 @@
 package me.ianhe.model;
 
 import java.io.Serializable;
+import java.util.StringJoiner;
 
 /**
  * @author iHelin
@@ -68,14 +69,16 @@ public class Apple implements Serializable {
         }
         Apple other = (Apple) obj;
         if (id == null) {
-            if (other.id != null) {
-                return false;
-            }
-        } else if (!id.equals(other.id)) {
-            return false;
-        }
-        return true;
+            return other.id == null;
+        } else return id.equals(other.id);
     }
 
-
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Apple.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("price=" + price)
+                .add("name='" + name + "'")
+                .toString();
+    }
 }

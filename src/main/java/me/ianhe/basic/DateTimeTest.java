@@ -1,4 +1,4 @@
-package me.ianhe.test;
+package me.ianhe.basic;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -27,7 +27,8 @@ public class DateTimeTest {
         c1.setTime(date1);
         c2.setTime(date2);
         while (c1.compareTo(c2) < 0) {
-            c1.add(Calendar.MONTH, 1);// 开始日期加一个月直到等于结束日期为止
+            // 开始日期加一个月直到等于结束日期为止
+            c1.add(Calendar.MONTH, 1);
             Date ss = c1.getTime();
             String str = aa.format(ss);
             str = str.substring(0, str.lastIndexOf("-"));

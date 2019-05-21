@@ -1,4 +1,4 @@
-package me.ianhe.test;
+package me.ianhe.book;
 
 import java.text.NumberFormat;
 

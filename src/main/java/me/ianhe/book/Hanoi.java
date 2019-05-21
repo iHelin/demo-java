@@ -1,4 +1,4 @@
-package me.ianhe.test;
+package me.ianhe.book;
 
 /**
  * 汉诺塔-递归

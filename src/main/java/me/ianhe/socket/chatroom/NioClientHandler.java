@@ -1,4 +1,4 @@
-package me.ianhe.nio;
+package me.ianhe.socket.chatroom;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -42,7 +42,7 @@ public class NioClientHandler implements Runnable {
 
                     //如果是可读事件
                     if (selectionKey.isReadable()) {
-                        readHandler(selectionKey, selector);
+                        readHandler(selectionKey);
                     }
                 }
             }
@@ -54,7 +54,7 @@ public class NioClientHandler implements Runnable {
     /**
      * 可读事件处理器
      */
-    private void readHandler(SelectionKey selectionKey, Selector selector) throws IOException {
+    private void readHandler(SelectionKey selectionKey) throws IOException {
         SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         StringBuilder response = new StringBuilder();

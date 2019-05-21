@@ -1,4 +1,4 @@
-package me.ianhe.xml;
+package me.ianhe.other.xml;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

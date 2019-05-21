@@ -1,4 +1,4 @@
-package me.ianhe.test;
+package me.ianhe.basic;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import java.util.Map;
  * @author iHelin
  * @date 2019-02-27 16:57
  */
-public class LinkedHashMapSample {
+public class LinkedHashMapTest {
 
 
     public static void main(String[] args) {
@@ -30,9 +30,8 @@ public class LinkedHashMapSample {
         // 触发删除
         accessOrderedMap.put("Project4", "Mission Control");
         System.out.println("Oldest entry should be removed:");
-        accessOrderedMap.forEach((k, v) -> {// 遍历顺序不变
-            System.out.println(k + ":" + v);
-        });
+        // 遍历顺序不变
+        accessOrderedMap.forEach((k, v) -> System.out.println(k + ":" + v));
     }
 
 
