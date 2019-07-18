@@ -5,6 +5,8 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 协作之Semaphore
+ *
  * @author iHelin
  * @since 2017/12/20 11:10
  */
@@ -51,7 +53,9 @@ public class SemaphoreTest {
     }
 
     public static void main(String[] args) {
-        Parking parking = new Parking(3);
+        int count = 3;
+        //假设停车场有[count]个停车位
+        Parking parking = new Parking(count);
         for (int i = 0; i < 5; i++) {
             new Car(parking).start();
         }

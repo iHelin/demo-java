@@ -28,6 +28,10 @@ public class ThreadPoolTest {
     public static void main(String[] args) throws Exception {
         //1. 创建线程池
         ExecutorService threadPool = Executors.newFixedThreadPool(5);
+//        ExecutorService threadPool = Executors.newCachedThreadPool();
+//        ExecutorService threadPool = new ThreadPoolExecutor(5, 5,
+//                0L, TimeUnit.MILLISECONDS,
+//                new LinkedBlockingQueue<>());
         List<Future<Integer>> list = new ArrayList<>();
 
         //2. 为线程池中的线程分配10个任务

@@ -1,4 +1,4 @@
-package me.ianhe.socket.chatroom;
+package me.ianhe.socket.nio.chatroom;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

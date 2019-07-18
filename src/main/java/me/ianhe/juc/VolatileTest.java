@@ -1,7 +1,5 @@
 package me.ianhe.juc;
 
-import org.junit.Test;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,8 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class VolatileTest {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         ThreadDemo td = new ThreadDemo();
         new Thread(td).start();
 

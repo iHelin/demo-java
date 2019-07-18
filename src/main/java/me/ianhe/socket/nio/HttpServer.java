@@ -23,7 +23,7 @@ public class HttpServer {
         //创建ServerSocketChannel
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         //监听8080端口
-        serverSocketChannel.socket().bind(new InetSocketAddress(8080));
+        serverSocketChannel.socket().bind(new InetSocketAddress(8000));
         //设置为非阻塞模式
         serverSocketChannel.configureBlocking(false);
         //创建选择器
