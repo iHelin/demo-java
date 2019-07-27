@@ -9,11 +9,11 @@ import java.sql.*;
 public class CallableStatementTest {
 
     public static void main(String[] args) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("加载驱动异常");
-        }
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//        } catch (ClassNotFoundException e) {
+//            System.out.println("加载驱动异常");
+//        }
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://112.74.203.130:3306/iHelin", "ihelin", "246260");
             CallableStatement cs = connection.prepareCall("{call getnamebyid(?,?)}");
