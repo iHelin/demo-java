@@ -8,12 +8,14 @@ import java.util.concurrent.Future;
 
 /**
  * 一、线程池：提供了一个线程队列，队列中保存着所有等待状态的线程。避免了创建与销毁额外开销，提高了响应的速度。
+ * <p>
  * 二、线程池的体系结构：
  * java.util.concurrent.Executor : 负责线程的使用与调度的根接口
  * |--**ExecutorService 子接口: 线程池的主要接口
  * |--ThreadPoolExecutor 线程池的实现类
  * |--ScheduledExecutorService 子接口：负责线程的调度
  * |--ScheduledThreadPoolExecutor ：继承 ThreadPoolExecutor， 实现 ScheduledExecutorService
+ * <p>
  * 三、工具类 : Executors
  * ExecutorService newFixedThreadPool() : 创建固定大小的线程池
  * ExecutorService newCachedThreadPool() : 缓存线程池，线程池的数量不固定，可以根据需求自动的更改数量。
@@ -30,7 +32,7 @@ public class ThreadPoolTest {
         ExecutorService threadPool = Executors.newFixedThreadPool(5);
 //        ExecutorService threadPool = Executors.newCachedThreadPool();
 //        ExecutorService threadPool = new ThreadPoolExecutor(5, 5,
-//                0L, TimeUnit.MILLISECONDS,
+//                60L, TimeUnit.SECONDS,
 //                new LinkedBlockingQueue<>());
         List<Future<Integer>> list = new ArrayList<>();
 

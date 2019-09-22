@@ -11,13 +11,11 @@ import java.util.concurrent.TimeUnit;
  * @author iHelin
  * @since 2018/10/2 09:22
  */
-public class Main {
+public class FutureTaskTest {
 
     public static void main(String[] args) {
-        EmployeeThread employeeThread = new EmployeeThread();
-
         for (int i = 0; i < 10; i++) {
-            FutureTask<String> futureTask = new FutureTask<>(employeeThread);
+            FutureTask<String> futureTask = new FutureTask<>(new EmployeeThread());
             new Thread(futureTask, "员工" + i).start();
             try {
                 String res = futureTask.get();

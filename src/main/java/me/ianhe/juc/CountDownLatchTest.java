@@ -22,9 +22,8 @@ public class CountDownLatchTest {
         int count = 10;
         final CountDownLatch latch = new CountDownLatch(count);
         System.out.println("Boss在会议室等待，总共有" + count + "个人开会...");
-        EmployeeThread latchDemo = new EmployeeThread(latch);
         for (int i = 0; i < count; i++) {
-            new Thread(latchDemo, "员工" + i).start();
+            new Thread(new EmployeeThread(latch), "员工" + i).start();
         }
         try {
             latch.await();

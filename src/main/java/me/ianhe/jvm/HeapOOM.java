@@ -14,6 +14,8 @@ import java.util.List;
 public class HeapOOM {
 
     private static class OOMObject {
+        private byte[] bigSize = new byte[1024 * 1024];
+//        private ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
     }
 
     public static void main(String[] args) {

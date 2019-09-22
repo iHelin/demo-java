@@ -20,13 +20,12 @@ import java.util.concurrent.TimeUnit;
  * ExecutorService newFixedThreadPool() : 创建固定大小的线程池
  * ExecutorService newCachedThreadPool() : 缓存线程池，线程池的数量不固定，可以根据需求自动的更改数量。
  * ExecutorService newSingleThreadExecutor() : 创建单个线程池。线程池中只有一个线程
- * <p>
  * ScheduledExecutorService newScheduledThreadPool() : 创建固定大小的线程，可以延迟或定时的执行任务。
  *
  * @author iHelin
  * @since 2017/11/23 14:08
  */
-public class ScheduledThreadPoolTest {
+public class ThreadPoolScheduledTest {
 
     public static void main(String[] args) throws Exception {
         ScheduledExecutorService pool = Executors.newScheduledThreadPool(5);
