@@ -36,7 +36,7 @@ public class ThreadPoolTest {
 //                new LinkedBlockingQueue<>());
         List<Future<Integer>> list = new ArrayList<>();
 
-        //2. 为线程池中的线程分配10个任务
+        //2. 为线程池中的线程分配2/10个任务，核心线程都会创建5个
         for (int i = 0; i < 10; i++) {
             Future<Integer> future = threadPool.submit(() -> {
                 int sum = 0;
