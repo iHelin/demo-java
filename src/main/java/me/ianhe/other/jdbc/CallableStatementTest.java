@@ -15,7 +15,7 @@ public class CallableStatementTest {
 //            System.out.println("加载驱动异常");
 //        }
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://112.74.203.130:3306/iHelin", "ihelin", "246260");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/iHelin", "root", "246260");
             CallableStatement cs = connection.prepareCall("{call getnamebyid(?,?)}");
             cs.setInt(1, 7);  //索引1，第3个id
             //输出参数的话要注册
