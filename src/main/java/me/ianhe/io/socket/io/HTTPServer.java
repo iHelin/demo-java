@@ -1,4 +1,4 @@
-package me.ianhe.socket.io;
+package me.ianhe.io.socket.io;
 
 import java.io.*;
 import java.net.ServerSocket;

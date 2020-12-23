@@ -15,14 +15,15 @@
                 <activeByDefault>true</activeByDefault>
                 <jdk>1.8</jdk>
             </activation>
-            <properties>
-                <maven.test.skip>true</maven.test.skip>
-                <maven.compiler.source>1.8</maven.compiler.source>
-                <maven.compiler.target>1.8</maven.compiler.target>
-                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
-            </properties>
         </profile>
     </profiles>
+
+    <properties>
+        <maven.test.skip>true</maven.test.skip>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+    </properties>
 
     <!--spring版本统一-->
     <dependencyManagement>
@@ -201,7 +202,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>me.ianhe.socket.io.HTTPServer</mainClass>
+                            <mainClass>me.ianhe.io.socket.io.HTTPServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,4 +1,4 @@
-package me.ianhe.socket.nio;
+package me.ianhe.io.socket.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -51,8 +51,7 @@ public class HttpServer {
     }
 
     private static class HttpHandler implements Runnable {
-        private int bufferSize = 1024;
-        private SelectionKey selectionKey;
+        private final SelectionKey selectionKey;
 
         public HttpHandler(SelectionKey selectionKey) {
             this.selectionKey = selectionKey;
@@ -75,6 +74,7 @@ public class HttpServer {
         }
 
         private void handleAccept() throws IOException {
+            int bufferSize = 1024;
             SocketChannel clientChannel = ((ServerSocketChannel) selectionKey.channel()).accept();
             clientChannel.configureBlocking(false);
             clientChannel.register(selectionKey.selector(), SelectionKey.OP_READ, ByteBuffer.allocate(bufferSize));

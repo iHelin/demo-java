@@ -1,4 +1,4 @@
-package me.ianhe.nio;
+package me.ianhe.io.nio;
 
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ import java.util.Scanner;
  * @since 2017/11/22 22:44
  */
 public class NonBlockingNIOTest2 {
-    private static int port = 9898;
+    private static final int port = 9898;
 
     /**
      * 发送方

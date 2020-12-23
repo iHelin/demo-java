@@ -1,4 +1,4 @@
-package me.ianhe.nio;
+package me.ianhe.io.nio;
 
 import org.junit.Test;
 

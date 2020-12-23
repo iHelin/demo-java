@@ -1,4 +1,4 @@
-package me.ianhe.nio;
+package me.ianhe.io.nio;
 
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ import java.nio.file.StandardOpenOption;
  */
 public class BlockingNIOTest2 {
 
-    private int port = 9898;
+    private final int port = 9898;
 
     /**
      * 客户端

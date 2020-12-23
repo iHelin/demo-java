@@ -1,4 +1,4 @@
-package me.ianhe.socket.io;
+package me.ianhe.io.socket.io;
 
 import java.io.IOException;
 import java.io.OutputStream;

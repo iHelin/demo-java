@@ -1,4 +1,4 @@
-package me.ianhe.socket.io;
+package me.ianhe.io.socket.io;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,15 +24,15 @@ public class HttpServer2 {
                      InputStream inputStream = socket.getInputStream();
                      OutputStream outputStream = socket.getOutputStream()) {
 
-                    byte[] aaa = new byte[16];
-                    int read = inputStream.read(aaa);
+                    byte[] bytes = new byte[16];
+                    int read = inputStream.read(bytes);
 
-                    while (read >= aaa.length) {
-                        System.out.print(new String(aaa, 0, read));
-                        read = inputStream.read(aaa);
+                    while (read >= bytes.length) {
+                        System.out.print(new String(bytes, 0, read));
+                        read = inputStream.read(bytes);
                     }
 
-                    System.out.print(new String(aaa, 0, read));
+                    System.out.print(new String(bytes, 0, read));
 
                     System.out.println();
 

@@ -1,4 +1,4 @@
-package me.ianhe.socket.nio.chatroom;
+package me.ianhe.io.socket.nio.chatroom;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public class NioClientHandler implements Runnable {
 
-    private Selector selector;
+    private final Selector selector;
 
     public NioClientHandler(Selector selector) {
         this.selector = selector;

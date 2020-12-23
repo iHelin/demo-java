@@ -1,4 +1,4 @@
-package me.ianhe.nio;
+package me.ianhe.io.nio;
 
 import org.junit.Test;
 
@@ -37,50 +37,6 @@ import java.nio.ByteBuffer;
 public class BufferTest {
 
     /**
-     * 直接缓冲区的使用，allocateDirect
-     *
-     * @author iHelin
-     * @since 2017/11/28 22:47
-     */
-    @Test
-    public void test3() {
-        ByteBuffer buf = ByteBuffer.allocateDirect(1024);
-        System.out.println(buf.isDirect());
-    }
-
-    /**
-     * mark()和reset()的使用
-     *
-     * @author iHelin
-     * @since 2017/11/28 22:45
-     */
-    @Test
-    public void test2() {
-        String str = "abcde";
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
-        buffer.put(str.getBytes());
-        buffer.flip();
-        byte[] dst = new byte[buffer.limit()];
-        buffer.get(dst, 0, 2);
-        System.out.println(new String(dst, 0, 2));
-        System.out.println(buffer.position());
-        //mark():标记
-        buffer.mark();
-        buffer.get(dst, 2, 2);
-        System.out.println(new String(dst, 2, 2));
-        System.out.println(buffer.position());
-        //reset():恢复到mark的位置
-        buffer.reset();
-        System.out.println(buffer.position());
-
-        //判断缓冲区中是否还有剩余数据
-        if (buffer.hasRemaining()) {
-            //获取缓冲区中可以操作的数量
-            System.out.println(buffer.remaining());
-        }
-    }
-
-    /**
      * ByteBuffer基本用法
      * ByteBuffer分配的大小不能小于字符串长度，否则会报BufferOverflowException
      *
@@ -89,7 +45,7 @@ public class BufferTest {
      */
     @Test
     public void test1() {
-        String str = "abcde";
+        String str = "abcdefg";
         //1.分配一个指定大小的缓冲区
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         System.out.println("-----------allocate()-----------------");
@@ -136,6 +92,50 @@ public class BufferTest {
         System.out.println(byteBuffer.capacity());
 
         System.out.println((char) byteBuffer.get());
+    }
+
+    /**
+     * mark()和reset()的使用
+     *
+     * @author iHelin
+     * @since 2017/11/28 22:45
+     */
+    @Test
+    public void test2() {
+        String str = "abcde";
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        buffer.put(str.getBytes());
+        buffer.flip();
+        byte[] dst = new byte[buffer.limit()];
+        buffer.get(dst, 0, 2);
+        System.out.println(new String(dst, 0, 2));
+        System.out.println(buffer.position());
+        //mark():标记
+        buffer.mark();
+        buffer.get(dst, 2, 2);
+        System.out.println(new String(dst, 2, 2));
+        System.out.println(buffer.position());
+        //reset():恢复到mark的位置
+        buffer.reset();
+        System.out.println(buffer.position());
+
+        //判断缓冲区中是否还有剩余数据
+        if (buffer.hasRemaining()) {
+            //获取缓冲区中可以操作的数量
+            System.out.println(buffer.remaining());
+        }
+    }
+
+    /**
+     * 直接缓冲区的使用，allocateDirect
+     *
+     * @author iHelin
+     * @since 2017/11/28 22:47
+     */
+    @Test
+    public void test3() {
+        ByteBuffer buf = ByteBuffer.allocateDirect(1024);
+        System.out.println(buf.isDirect());
     }
 
 }
