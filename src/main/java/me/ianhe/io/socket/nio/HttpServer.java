@@ -43,7 +43,7 @@ public class HttpServer {
                 SelectionKey selectionKey = keyIterator.next();
                 // 启动新线程处理SelectionKey
                 Thread thread = new Thread(new HttpHandler(selectionKey), "http-thread");
-                thread.run();
+                thread.start();
                 // 处理完后，从待处理的SelectionKey迭代器中移除当前所使用的key
                 keyIterator.remove();
             }

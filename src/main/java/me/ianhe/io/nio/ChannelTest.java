@@ -66,15 +66,15 @@ public class ChannelTest {
         FileChannel inputChannel = inputStream.getChannel();
         FileChannel outputChannel = outputStream.getChannel();
 
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         //将通道中的数据存入缓冲区中
-        while (inputChannel.read(buffer) != -1) {
-            //切换成读数据模式
-            buffer.flip();
-            //将缓冲区中的数据写入通道中
-            outputChannel.write(buffer);
+        while (inputChannel.read(byteBuffer) != -1) {
+            //切换成[读数据模式]
+            byteBuffer.flip();
+            //将缓冲区中的数据写入通道中，因为是从byteBuffer中取数据，所以要切换成[读数据模式]
+            outputChannel.write(byteBuffer);
             //清空缓冲区
-            buffer.clear();
+            byteBuffer.clear();
         }
         outputChannel.close();
         inputChannel.close();

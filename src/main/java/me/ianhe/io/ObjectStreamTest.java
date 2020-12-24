@@ -1,6 +1,6 @@
 package me.ianhe.io;
 
-import me.ianhe.annotation.Student;
+import me.ianhe.basic.annotation.Student;
 
 import java.io.*;
 

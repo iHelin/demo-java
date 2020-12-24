@@ -74,8 +74,9 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>5.0.0.Alpha1</version>
+            <version>4.1.52.Final</version>
         </dependency>
+
 
         <!--guava-->
         <dependency>
@@ -202,7 +203,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>me.ianhe.io.socket.io.HTTPServer</mainClass>
+                            <mainClass>me.ianhe.io.socket.io.HTTPServer2</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
