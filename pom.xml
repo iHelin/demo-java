@@ -4,7 +4,7 @@
     <groupId>io.github.ihelin</groupId>
     <artifactId>demo</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
     <name>hello Maven Webapp</name>
     <url>https://github.com/iHelin/hello</url>
     <description>Demo for java</description>
@@ -290,10 +290,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <phase>compile</phase>
