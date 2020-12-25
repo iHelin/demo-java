@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.netty.simple;
+package io.github.ihelin.demo.netty;
 
 import io.netty.util.NettyRuntime;
 
