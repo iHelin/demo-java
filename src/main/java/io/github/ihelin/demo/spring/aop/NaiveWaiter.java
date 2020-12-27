@@ -2,7 +2,7 @@ package io.github.ihelin.demo.spring.aop;
 
 /**
  * @author iHelin
- * @create 2017-04-15 20:30
+ * @since 2017-04-15 20:30
  */
 public class NaiveWaiter implements Waiter {
 

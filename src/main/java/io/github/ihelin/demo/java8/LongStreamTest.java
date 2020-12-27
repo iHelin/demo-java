@@ -6,7 +6,7 @@ import java.util.stream.LongStream;
 
 /**
  * @author iHelin
- * @date 2019/9/9 14:28
+ * @since 2019/9/9 14:28
  */
 public class LongStreamTest {
 

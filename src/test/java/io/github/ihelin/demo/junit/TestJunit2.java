@@ -8,7 +8,7 @@ import org.junit.Test;
  * 测试TestCase中的方法
  *
  * @author iHelin
- * @create 2017-02-04 17:51
+ * @since 2017-02-04 17:51
  */
 public class TestJunit2 extends TestCase {
 

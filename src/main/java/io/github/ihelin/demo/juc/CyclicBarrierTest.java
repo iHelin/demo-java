@@ -6,7 +6,7 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  * @author iHelin
- * @date 2019-02-22 17:40
+ * @since 2019-02-22 17:40
  */
 public class CyclicBarrierTest {
 

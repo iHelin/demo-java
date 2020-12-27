@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.netty.io.nio;
+package io.github.ihelin.demo.io.nio.nio;
 
 import java.io.IOException;
 

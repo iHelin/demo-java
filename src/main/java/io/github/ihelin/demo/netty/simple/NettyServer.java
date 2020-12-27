@@ -25,8 +25,6 @@ public class NettyServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
-
-
 //      创建服务端的启动对象，配置参数
             ServerBootstrap bootstrap = new ServerBootstrap();
 //      使用链式编程方式进行设置

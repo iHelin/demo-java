@@ -23,7 +23,7 @@ import java.io.*;
  * BufferedOutputStream--->write方法更方便，相当于一瓢一瓢先放入桶中，然后从桶中倒入到另一个缸中
  *
  * @author iHelin
- * @date 2019-02-27 11:20
+ * @since 2019-02-27 11:20
  */
 public class IOSupport {
 

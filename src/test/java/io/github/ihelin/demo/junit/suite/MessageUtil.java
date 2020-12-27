@@ -2,7 +2,7 @@ package io.github.ihelin.demo.junit.suite;
 
 /**
  * @author iHelin
- * @create 2017-02-04 17:42
+ * @since 2017-02-04 17:42
  */
 public class MessageUtil {
 

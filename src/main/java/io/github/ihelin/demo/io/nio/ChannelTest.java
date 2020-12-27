@@ -44,8 +44,8 @@ import java.nio.file.StandardOpenOption;
  * 聚集写入(Gathering Writes):将多个缓冲区中的数据聚集到通道中
  * <p>
  * 六、字符集：charset
- * 编码：字符串->字节数组
- * 解码：字节数组->字符串
+ * 编码：字符串-&gt;字节数组
+ * 解码：字节数组-&gt;字符串
  *
  * @author iHelin
  * @since 2017/11/20 21:52

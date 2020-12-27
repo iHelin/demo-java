@@ -2,7 +2,7 @@ package io.github.ihelin.demo.juc;
 
 /**
  * @author iHelin
- * @date 2019/9/5 09:28
+ * @since 2019/9/5 09:28
  */
 public class InterruptTest {
 

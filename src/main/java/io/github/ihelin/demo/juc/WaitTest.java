@@ -2,7 +2,7 @@ package io.github.ihelin.demo.juc;
 
 /**
  * @author iHelin
- * @date 2019-02-22 17:28
+ * @since 2019-02-22 17:28
  */
 public class WaitTest {
 

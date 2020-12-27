@@ -4,7 +4,7 @@ package io.github.ihelin.demo.book;
  * 汉诺塔-递归
  *
  * @author iHelin
- * @date 2019-01-19 14:34
+ * @since 2019-01-19 14:34
  */
 public class Hanoi {
 

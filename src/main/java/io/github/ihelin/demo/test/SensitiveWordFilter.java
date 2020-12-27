@@ -23,7 +23,7 @@ public class SensitiveWordFilter {
      *
      * @param txt       文字
      * @param matchType 匹配规则1：最小匹配规则，2：最大匹配规则
-     * @return
+     * @return 是否包含敏感字符
      */
     public boolean containsSensitiveWord(String txt, int matchType) {
         boolean flag = false;
@@ -43,7 +43,7 @@ public class SensitiveWordFilter {
      *
      * @param txt       文本字符串
      * @param matchType 匹配规则1：最小匹配规则，2：最大匹配规则
-     * @return
+     * @return 敏感词集合
      */
     public Set<String> getSensitiveWord(String txt, int matchType) {
         Set<String> sensitiveWordSet = new HashSet<>();
@@ -63,10 +63,10 @@ public class SensitiveWordFilter {
     /**
      * 替换敏感字字符
      *
-     * @param txt
-     * @param matchType
-     * @param replaceChar
-     * @return
+     * @param txt         文本字符串
+     * @param matchType   匹配规则1：最小匹配规则，2：最大匹配规则
+     * @param replaceChar 需要替换的字符串
+     * @return 替换后的文本
      */
     public String replaceSensitiveWord(String txt, int matchType, String replaceChar) {
         String resultTxt = txt;
@@ -86,9 +86,9 @@ public class SensitiveWordFilter {
     /**
      * 获取替换字符串
      *
-     * @param replaceChar
-     * @param length
-     * @return
+     * @param replaceChar 需要替换的字符串
+     * @param length      长度
+     * @return 替换后的字符串
      */
     private String getReplaceChars(String replaceChar, int length) {
         StringBuilder resultReplace = new StringBuilder(replaceChar);
@@ -101,10 +101,10 @@ public class SensitiveWordFilter {
     /**
      * 检查文字中是否包含敏感字符，如果存在，则返回敏感词字符的长度，不存在返回0
      *
-     * @param txt
-     * @param beginIndex
-     * @param matchType
-     * @return
+     * @param txt        文本字符串
+     * @param beginIndex 起始位置
+     * @param matchType  匹配规则1：最小匹配规则，2：最大匹配规则
+     * @return 敏感词字符的长度
      */
     private int getSensitiveWordLength(String txt, int beginIndex, int matchType) {
         /*敏感词结束标识位：用于敏感词只有1位的情况*/

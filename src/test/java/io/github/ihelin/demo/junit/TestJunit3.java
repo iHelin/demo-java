@@ -8,7 +8,7 @@ import org.junit.Test;
  * 测试TestResult中的方法
  *
  * @author iHelin
- * @create 2017-02-04 17:55
+ * @since 2017-02-04 17:55
  */
 public class TestJunit3 extends TestResult {
 

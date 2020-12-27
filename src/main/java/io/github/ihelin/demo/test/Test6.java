@@ -5,7 +5,7 @@ package io.github.ihelin.demo.test;
  * 那么一个整数的二进制表示中有多少个1，就可以进行多少次这样的操作。
  *
  * @author iHelin
- * @date 2019-02-27 15:50
+ * @since 2019-02-27 15:50
  */
 public class Test6 {
 

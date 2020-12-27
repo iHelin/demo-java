@@ -7,7 +7,7 @@ package io.github.ihelin.demo.jvm;
  * vm options:-verbose:gc
  *
  * @author iHelin
- * @date 2019-01-16 15:47
+ * @since 2019-01-16 15:47
  */
 public class FinalizeEscapeGC {
 

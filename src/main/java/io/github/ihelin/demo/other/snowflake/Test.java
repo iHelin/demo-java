@@ -4,7 +4,7 @@ import com.relops.snowflake.Snowflake;
 
 /**
  * @author iHelin
- * @date 2018-12-24 09:09
+ * @since 2018-12-24 09:09
  */
 public class Test {
 

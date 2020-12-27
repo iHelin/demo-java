@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
  * 断言测试
  *
  * @author iHelin
- * @create 2017-02-04 17:49
+ * @since 2017-02-04 17:49
  */
 public class TestJunit1 {
 

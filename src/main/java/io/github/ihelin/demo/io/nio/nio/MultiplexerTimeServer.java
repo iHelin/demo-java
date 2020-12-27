@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.netty.io.nio;
+package io.github.ihelin.demo.io.nio.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -19,13 +19,12 @@ import java.util.Set;
 public class MultiplexerTimeServer implements Runnable {
 
     private Selector selector;
-    private ServerSocketChannel serverSocketChannel;
     private volatile boolean stop;
 
     public MultiplexerTimeServer(int port) {
         try {
             selector = Selector.open();
-            serverSocketChannel = ServerSocketChannel.open();
+            ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
             serverSocketChannel.configureBlocking(false);
             serverSocketChannel.socket().bind(new InetSocketAddress(port), 1024);
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
@@ -99,10 +98,7 @@ public class MultiplexerTimeServer implements Runnable {
                 } else if (readBytes < 0) {
                     key.cancel();
                     sc.close();
-                } else {
-
                 }
-
             }
         }
     }
@@ -115,6 +111,5 @@ public class MultiplexerTimeServer implements Runnable {
             writeBuffer.flip();
             sc.write(writeBuffer);
         }
-
     }
 }

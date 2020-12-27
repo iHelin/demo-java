@@ -4,7 +4,7 @@ package io.github.ihelin.demo.jvm;
  * VM options:-verbose:gc或-XX:+PrintGCDetails
  *
  * @author iHelin
- * @date 2019-01-15 17:20
+ * @since 2019-01-15 17:20
  */
 public class ReferenceCountingGC {
 
