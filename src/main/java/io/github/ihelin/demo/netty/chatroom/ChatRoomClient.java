@@ -49,7 +49,6 @@ public class ChatRoomClient {
                 String msg = scanner.nextLine();
                 channel.writeAndFlush(msg + "\r\n");
             }
-//            channel.closeFuture().sync();
         } finally {
             group.shutdownGracefully();
         }
