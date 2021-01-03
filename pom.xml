@@ -8,12 +8,14 @@
     <name>hello</name>
     <url>https://github.com/iHelin/hello</url>
     <description>Demo for java</description>
+
     <licenses>
         <license>
             <name>The MIT License</name>
             <url>http://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
+
     <developers>
         <developer>
             <name>iHelin</name>
