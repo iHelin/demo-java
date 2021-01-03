@@ -15,9 +15,9 @@ import java.sql.SQLException;
  * @author iHelin
  * @since 2018/5/8 14:26
  */
-public class App {
+public class MainTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainTest.class);
 
     public static void main(String[] args) throws SQLException {
         // 用我们的配置文件来启动一个 ApplicationContext
