@@ -10,9 +10,7 @@ public class Test2 {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         long sum = 0L;
-        /**
-         * i <= Integer.MAX_VALUE 将进入死循环，不能包含等于
-         */
+        // i <= Integer.MAX_VALUE 将进入死循环，不能包含等于
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             sum += i;
         }
