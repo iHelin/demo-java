@@ -24,9 +24,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:ihelin/hello.git</connection>
-        <developerConnection>scm:git:git@github.com:ihelin/hello.git</developerConnection>
-        <url>git@github.com:ihelin/hello.git</url>
+        <connection>scm:git:git@github.com:ihelin/demo-java.git</connection>
+        <developerConnection>scm:git:git@github.com:ihelin/demo-java.git</developerConnection>
+        <url>git@github.com:ihelin/demo-java.git</url>
     </scm>
 
     <profiles>
