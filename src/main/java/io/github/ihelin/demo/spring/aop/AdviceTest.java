@@ -35,7 +35,7 @@ public class AdviceTest {
 
     @Test
     public void testAdvice() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-aop.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring/aop.xml");
         Waiter waiter = (Waiter) context.getBean("waiter");
         waiter.greetTo("John");
     }

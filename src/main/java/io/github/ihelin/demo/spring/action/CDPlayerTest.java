@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @since 2018/8/29 12:48
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("sgt")
+@ActiveProfiles("dev")
 @ContextConfiguration(classes = CDPlayerConfig.class)
 public class CDPlayerTest {
 

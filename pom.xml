@@ -5,7 +5,7 @@
     <artifactId>demo</artifactId>
     <packaging>jar</packaging>
     <version>1.0.1</version>
-    <name>hello Maven Webapp</name>
+    <name>hello</name>
     <url>https://github.com/iHelin/hello</url>
     <description>Demo for java</description>
     <licenses>
@@ -78,7 +78,7 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
-                <version>5.1.5.RELEASE</version>
+                <version>5.1.20.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -130,6 +130,11 @@
             <version>3.11.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
 
         <!--guava-->
         <dependency>
