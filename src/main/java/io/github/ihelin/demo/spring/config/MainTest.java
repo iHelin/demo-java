@@ -7,6 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.sql.SQLException;
 
 /**
+ * 使用 Java config 方式配置 Spring
+ *
  * @author iHelin
  * @since 2018/5/8 14:26
  */
