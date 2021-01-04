@@ -13,7 +13,7 @@ public class ServletMappingConfig {
     public static List<ServletMapping> servletMappingList = Lists.newArrayList();
 
     static {
-        servletMappingList.add(new ServletMapping("findGirl", "/girl", "me.ianhe.my.tomcat.FindGirlServlet"));
-        servletMappingList.add(new ServletMapping("helloWorld", "/world", "me.ianhe.my.tomcat.HelloWorldServlet"));
+        servletMappingList.add(new ServletMapping("findGirl", "/girl", "io.github.ihelin.demo.test.my.tomcat.FindGirlServlet"));
+        servletMappingList.add(new ServletMapping("helloWorld", "/world", "io.github.ihelin.demo.test.my.tomcat.HelloWorldServlet"));
     }
 }

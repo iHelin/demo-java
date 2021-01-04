@@ -28,7 +28,7 @@ public class MyTomcat {
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(port);
-            System.out.println("MyTomcat is start...");
+            System.out.println("MyTomcat is start in port " + port);
             while (true) {
                 Socket socket = serverSocket.accept();
                 InputStream inputStream = socket.getInputStream();
@@ -57,19 +57,20 @@ public class MyTomcat {
         }
     }
 
-    private void dispatch(MyRequest myRequest, MyResponse myResponse) {
+    private void dispatch(MyRequest myRequest, MyResponse myResponse) throws IOException {
         String clazz = urlServletMap.get(myRequest.getUrl());
-        try {
-            Class<MyServlet> myServletClass = (Class<MyServlet>) Class.forName(clazz);
-            MyServlet myServlet = myServletClass.newInstance();
-            myServlet.service(myRequest, myResponse);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
+        if (clazz != null) {
+            try {
+                Class<MyServlet> myServletClass = (Class<MyServlet>) Class.forName(clazz);
+                MyServlet myServlet = myServletClass.newInstance();
+                myServlet.service(myRequest, myResponse);
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+                e.printStackTrace();
+            }
+        } else {
+            myResponse.write("404 Not Found");
         }
+
     }
 
     public static void main(String[] args) {

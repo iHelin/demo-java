@@ -23,7 +23,6 @@ public class MyRequest {
         String httpHead = httpRequest.split("\n")[0];
         url = httpHead.split("\\s")[1];
         method = httpHead.split("\\s")[0];
-        System.out.println(this);
     }
 
     public String getUrl() {
