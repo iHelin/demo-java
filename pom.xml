@@ -5,7 +5,7 @@
     <artifactId>demo-java</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>hello</name>
+    <name>demo-java</name>
     <url>https://github.com/iHelin/hello</url>
     <description>Demo for java</description>
 
