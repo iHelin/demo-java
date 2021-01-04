@@ -59,7 +59,6 @@ public class DingTalkTest {
         mac.init(new SecretKeySpec(SIGN.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
         byte[] signData = mac.doFinal(bytesToSign);
         String sign = URLEncoder.encode(new String(Base64.encodeBase64(signData)), "UTF-8");
-        System.out.println(sign);
         return sign;
     }
 }
