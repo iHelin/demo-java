@@ -64,7 +64,6 @@ public class Test8 {
 
         ReentrantLock lock = new ReentrantLock();
 
-
         Thread thread1 = new Thread(new AddPoint(lock));
         Thread thread2 = new Thread(new ReducePoint(lock));
 
