@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.test;
+package io.github.ihelin.demo.utils;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
@@ -23,14 +23,20 @@ import java.util.Map;
  * @author iHelin
  * @since 2019-03-28 16:50
  */
-public class DingTalkTest {
+public class DingTalk {
 
     private static final String SIGN = "SECb84365c590c77868c69f7bdac8600759ff457301166e672078b59b383d609b8d";
     private static final String TOKEN = "5c48f9fe08ba0af65c08def326421f0fd1c54de1e97652d63cb3a05bace2641d";
     private static final String URL = "https://oapi.dingtalk.com/robot/send?access_token={1}&timestamp={2}&sign={3}";
 
-    public static void main(String[] args) throws MalformedURLException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
+    private DingTalk() {
+    }
 
+    public static void main(String[] args) throws MalformedURLException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
+        DingTalk.say("hello");
+    }
+
+    public static String say(String words) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
         Long timestamp = System.currentTimeMillis();
         String sign = sign();
 
@@ -42,14 +48,15 @@ public class DingTalkTest {
         Map<String, Object> body = new HashMap<>();
         body.put("msgtype", "text");
         Map<String, Object> contentMap = new HashMap<>();
-        contentMap.put("content", "Nice to meet you.");
+        contentMap.put("content", words);
         body.put("text", contentMap);
 
         HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
 
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(URL, request, String.class, TOKEN, timestamp, sign);
-        System.out.println(responseEntity.getBody());
+        return responseEntity.getBody();
     }
+
 
     private static String sign() throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
         Long timestamp = System.currentTimeMillis();
