@@ -35,7 +35,7 @@ public class DingTalk {
 
     public static String say(String words) {
         Long timestamp = System.currentTimeMillis();
-        String sign = sign();
+        String sign = sign(timestamp);
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -58,8 +58,7 @@ public class DingTalk {
     }
 
 
-    private static String sign() {
-        Long timestamp = System.currentTimeMillis();
+    private static String sign(Long timestamp) {
         String stringToSign = timestamp + "\n" + SIGN;
         byte[] bytesToSign = stringToSign.getBytes(StandardCharsets.UTF_8);
         String sign = "";
