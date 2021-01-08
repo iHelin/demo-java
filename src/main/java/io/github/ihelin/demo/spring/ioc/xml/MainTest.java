@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.spring.ioc;
+package io.github.ihelin.demo.spring.ioc.xml;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

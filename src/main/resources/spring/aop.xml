@@ -3,11 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="greetingAround" class="io.github.ihelin.demo.spring.aop.GreetingInterceptor"/>
-    <bean id="greetingBefore" class="io.github.ihelin.demo.spring.aop.GreetingBeforeAdvice"/>
-    <bean id="greetingAfter" class="io.github.ihelin.demo.spring.aop.GreetingAfterAdvice"/>
-    <bean id="waiterTarget" class="io.github.ihelin.demo.spring.aop.NaiveWaiter"/>
-    <bean id="sellerTarget" class="io.github.ihelin.demo.spring.aop.Seller"/>
+    <bean id="greetingAround" class="io.github.ihelin.demo.spring.aop.xml.GreetingInterceptor"/>
+    <bean id="greetingBefore" class="io.github.ihelin.demo.spring.aop.xml.GreetingBeforeAdvice"/>
+    <bean id="greetingAfter" class="io.github.ihelin.demo.spring.aop.xml.GreetingAfterAdvice"/>
+    <bean id="waiterTarget" class="io.github.ihelin.demo.spring.aop.xml.NaiveWaiter"/>
+    <bean id="sellerTarget" class="io.github.ihelin.demo.spring.aop.xml.Seller"/>
 
     <!--jdk动态代理-->
     <!--<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean">-->
@@ -29,8 +29,8 @@
         <property name="interceptorNames" value="greetingAround"/>
     </bean>
 
-    <bean id="transactionManager" class="io.github.ihelin.demo.spring.aop.TransactionManager"/>
-    <bean id="viewSpaceServiceTarget" class="io.github.ihelin.demo.spring.aop.ViewSpaceService"/>
+    <bean id="transactionManager" class="io.github.ihelin.demo.spring.aop.xml.TransactionManager"/>
+    <bean id="viewSpaceServiceTarget" class="io.github.ihelin.demo.spring.aop.xml.ViewSpaceService"/>
     <bean id="viewSpaceService" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="interceptorNames" value="transactionManager"/>
         <property name="target" ref="viewSpaceServiceTarget"/>
@@ -38,7 +38,7 @@
     </bean>
 
     <!--向切面注入一个前置增强-->
-    <bean id="greetingAdvisor" class="io.github.ihelin.demo.spring.aop.GreetingAdvisor">
+    <bean id="greetingAdvisor" class="io.github.ihelin.demo.spring.aop.xml.GreetingAdvisor">
         <property name="advice" ref="greetingBefore"/>
     </bean>
 

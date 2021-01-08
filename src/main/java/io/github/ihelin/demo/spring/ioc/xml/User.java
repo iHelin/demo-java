@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.spring.ioc;
+package io.github.ihelin.demo.spring.ioc.xml;
 
 /**
  * @author iHelin

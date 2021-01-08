@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.spring.aop;
+package io.github.ihelin.demo.spring.aop.xml;
 
 import org.springframework.aop.ClassFilter;
 import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;

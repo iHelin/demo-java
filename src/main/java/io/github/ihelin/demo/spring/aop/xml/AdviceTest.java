@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.spring.aop;
+package io.github.ihelin.demo.spring.aop.xml;
 
 import org.junit.Before;
 import org.junit.Test;

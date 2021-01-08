@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="user" class="io.github.ihelin.demo.spring.ioc.User">
+    <bean id="user" class="io.github.ihelin.demo.spring.ioc.xml.User">
         <property name="username">
             <value><![CDATA[<南京>]]></value>
         </property>

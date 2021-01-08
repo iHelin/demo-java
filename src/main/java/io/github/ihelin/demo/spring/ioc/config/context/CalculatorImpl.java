@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.spring.context;
+package io.github.ihelin.demo.spring.ioc.config.context;
 
 import org.springframework.stereotype.Component;
 

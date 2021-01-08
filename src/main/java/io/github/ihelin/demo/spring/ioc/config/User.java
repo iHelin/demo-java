@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.spring.config;
+package io.github.ihelin.demo.spring.ioc.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

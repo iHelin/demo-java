@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.spring.config;
+package io.github.ihelin.demo.spring.aop.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * 使用 Java config 方式配置 Spring
  *
  * @author iHelin
- * @since 2018/5/8 14:26
+ * @since 2021/1/8 17:56
  */
 public class MainTest {
 
@@ -18,8 +18,8 @@ public class MainTest {
 
     public static void main(String[] args) throws SQLException {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-        User user = context.getBean("user", User.class);
-        LOGGER.info(user.toString());
+        UserService userService = context.getBean("userService", UserService.class);
+        userService.add();
     }
 
 }
