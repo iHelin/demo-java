@@ -1,6 +1,7 @@
 package io.github.ihelin.demo.java8;
 
 import java.time.*;
+import java.util.Date;
 
 /**
  * @author iHelin
@@ -16,6 +17,20 @@ public class DateTimeTest {
         System.out.println("DayOfWeek.FRIDAY :" + DayOfWeek.FRIDAY);
         Clock clock = Clock.systemUTC();
         System.out.println("Clock.systemUTC() :" + clock.instant());
+        dateToInstant();
+        instantToDate();
+    }
+
+    private static void dateToInstant() {
+        Date now = new Date();
+        Instant instant = now.toInstant();
+        System.out.println(instant);
+    }
+
+    private static void instantToDate() {
+        Instant instant = Instant.now();
+        Date date = Date.from(instant);
+        System.out.println(date);
     }
 
 }
