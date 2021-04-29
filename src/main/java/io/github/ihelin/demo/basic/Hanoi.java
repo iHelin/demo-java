@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.book;
+package io.github.ihelin.demo.basic;
 
 /**
  * 汉诺塔-递归

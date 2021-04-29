@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.book;
+package io.github.ihelin.demo.basic;
 
 import java.util.Random;
 
@@ -12,8 +12,8 @@ public class TernaryOperator {
 
     public static void main(String[] args) {
         long i = 1L;
-        /**
-         * long i = 1l; l不要小写
+        /*
+          long i = 1l; l不要小写
          */
         System.out.println("i的两倍是：" + (i + i));
 

@@ -1,4 +1,4 @@
-package io.github.ihelin.demo.book;
+package io.github.ihelin.demo.basic;
 
 import java.text.NumberFormat;
 
